@@ -60,11 +60,11 @@ public abstract class Factory implements IFactory {
 	}
 
 	@Override
-	public ICommand createTransaction(IAccount account, double amount) {
-		if (amount >= 0) {
-			return new Deposit(account, amount);
+	public ICommand createTransaction(IEntry entry) {
+		if (entry.getAmount() >= 0) {
+			return new Deposit(entry);
 		} else {
-			return new Withdraw(account, amount);
+			return new Withdraw(entry);
 		}
 	}
 

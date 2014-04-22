@@ -1,24 +1,22 @@
 package edu.mum.cs.asd.framework.model.command;
 
-import edu.mum.cs.asd.framework.model.IAccount;
+import edu.mum.cs.asd.framework.model.IEntry;
 
 public class Deposit implements ICommand {
 
-    private IAccount account;
-    private double amount;
+    private IEntry entry;
     
-    public Deposit(IAccount account, double amount) {
-    	this.account = account;
-    	this.amount = amount;
+    public Deposit(IEntry entry) {
+    	this.entry = entry;
     }
 
     @Override
     public void execute() {
-    	account.deposit(amount);
+    	entry.getAccount().deposit(entry.getAmount());
     }
 
 	@Override
 	public void undo() {
-		account.withdraw(amount);
+		entry.getAccount().withdraw(entry.getAmount());
 	}
 }
