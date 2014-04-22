@@ -63,4 +63,5 @@ public abstract class Account implements IAccount {
 	public abstract void generateMonthlyReport();
 	public abstract void withdraw(double amount);
 	public abstract void deposit(double amount);
+	public abstract IPredicate<IAccount> getInsufficientPredicate();
 }

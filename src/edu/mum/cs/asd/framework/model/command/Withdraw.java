@@ -1,22 +1,36 @@
 package edu.mum.cs.asd.framework.model.command;
 
-import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.IAccount;
-import edu.mum.cs.asd.framework.model.predicate.AccNrSearchPredicate;
-import edu.mum.cs.asd.framework.model.predicate.InsufficientPredicate;
+import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class Withdraw implements ICommand {
 
-    public Account Unnamed1;
-    public InsufficientPredicate Unnamed2;
-    public AccNrSearchPredicate Unnamed3;
+    private IAccount account;
+    private double amount;
+    private IPredicate<IAccount> predicate;
+    
+    private boolean executed;
     
     public Withdraw(IAccount account, double amount) {
-    	
+    	this.account = account;
+    	this.amount = amount;
+    	this.predicate = account.getInsufficientPredicate();
+    	executed = false;
     }
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if (predicate.check(account)) {
+    		account.withdraw(amount);
+    		executed = true;
+    	}
     }
+
+	@Override
+	public void undo() {
+		if (executed) {
+			account.deposit(amount);
+			executed = false;
+		}
+	}
 }
