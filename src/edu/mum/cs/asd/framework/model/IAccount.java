@@ -5,6 +5,7 @@ import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public interface IAccount {
 	
+	public String getAccountNumber();
 	public void addEntry(IEntry entry);
 	public double getBalance();
 	public void notifyCustomer();

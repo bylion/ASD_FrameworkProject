@@ -20,7 +20,7 @@ public class Withdraw implements ICommand {
     @Override
     public void execute() {
     	if (predicate.check(entry.getAccount())) {
-    		entry.getAccount().withdraw(entry.getAmount());
+    		entry.getAccount().withdraw(Math.abs(entry.getAmount()));
     		executed = true;
     	}
     }
@@ -28,7 +28,7 @@ public class Withdraw implements ICommand {
 	@Override
 	public void undo() {
 		if (executed) {
-			entry.getAccount().deposit(entry.getAmount());
+			entry.getAccount().deposit(Math.abs(entry.getAmount()));
 			executed = false;
 		}
 	}
