@@ -1,15 +1,24 @@
 package edu.mum.cs.asd.framework.model.command;
 
-import edu.mum.cs.asd.framework.model.Account;
-import edu.mum.cs.asd.framework.model.predicate.AccNrSearchPredicate;
+import edu.mum.cs.asd.framework.model.IAccount;
 
 public class Deposit implements ICommand {
 
-    public Account Unnamed1;
-    public AccNrSearchPredicate Unnamed2;
+    private IAccount account;
+    private double amount;
+    
+    public Deposit(IAccount account, double amount) {
+    	this.account = account;
+    	this.amount = amount;
+    }
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	account.deposit(amount);
     }
+
+	@Override
+	public void undo() {
+		account.withdraw(amount);
+	}
 }

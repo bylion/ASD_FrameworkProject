@@ -13,4 +13,5 @@ public interface IAccount {
 	public String getAcctType();
 	public void withdraw(double amount);
 	public void deposit(double amount);
+	public IPredicate<IAccount> getInsufficientPredicate();
 }
