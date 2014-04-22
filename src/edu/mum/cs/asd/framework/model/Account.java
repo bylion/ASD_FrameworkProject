@@ -12,56 +12,70 @@ import edu.mum.cs.asd.framework.model.predicate.InsufficientPredicate;
 
 public abstract class Account implements IAccount {
 
-	protected String accountNumber;
+    protected String accountNumber;
     protected double balance;
     protected Customer customer;
     protected List<IEntry> entries;
-    
-   
+
     public InsufficientPredicate Unnamed6;
     public CurrentMonthPredicate Unnamed7;
     public EntryListFunctor Unnamed8;
-    
+
     public Account() {
-    	accountNumber = UUID.randomUUID().toString();
-    	balance = 0;
-    	entries = new ArrayList<IEntry>();
+        accountNumber = UUID.randomUUID().toString();
+        balance = 0;
+        entries = new ArrayList<>();
     }
-    
+
+    @Override
     public void addEntry(IEntry entry) {
-    	entries.add(entry);
+        entries.add(entry);
     }
 
     public double getCustomerBalance() {
-    	return balance;
+        return balance;
     }
 
+    @Override
     public void notifyCustomer() {
-    	customer.sendEmail(createNotification());
+        customer.sendEmail(createNotification());
     }
 
+    @Override
     public double getInterestValue() {
-    	return getInterestRate() * balance;
+        return getInterestRate() * balance;
     }
 
+    @Override
     public <R> R searchEntries(IPredicate<IEntry> predicate, IFunctor<IEntry, R> functor) {
-    	for (IEntry e : entries) {
-    		if (predicate.check(e)) {
-    			functor.compute(e);
-    		}
-    	}
-    	return functor.getValue();
+        for (IEntry e : entries) {
+            if (predicate.check(e)) {
+                functor.compute(e);
+            }
+        }
+        return functor.getValue();
     }
 
-	public String getAccountNumber() {
-		return accountNumber;
-	}
-	
-	public abstract String getAcctType();
-	public abstract double getInterestRate();
-	public abstract String createNotification();
-	public abstract void generateMonthlyReport();
-	public abstract void withdraw(double amount);
-	public abstract void deposit(double amount);
-	public abstract IPredicate<IAccount> getInsufficientPredicate();
+    @Override
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    @Override
+    public abstract String getAcctType();
+
+    public abstract double getInterestRate();
+
+    public abstract String createNotification();
+
+    public abstract void generateMonthlyReport();
+
+    @Override
+    public abstract void withdraw(double amount);
+
+    @Override
+    public abstract void deposit(double amount);
+
+    @Override
+    public abstract IPredicate<IAccount> getInsufficientPredicate();
 }

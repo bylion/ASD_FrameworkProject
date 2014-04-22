@@ -4,47 +4,52 @@ import java.util.Date;
 
 public class Entry implements IEntry {
 
-	private IAccount account;
+    private IAccount account;
     private double amount;
     private Date date;
     private double balanceBefore;
     private double balanceAfter;
-    
+
     /**
-     * Create an entry before doing the actual transaction, as when 
-     * creating an entry, it calls account.getBalance() for the 
-     * balanceBefore.
-     * 
+     * Create an entry before doing the actual transaction, as when creating an
+     * entry, it calls account.getBalance() for the balanceBefore.
+     *
      * The date of the entry is when the constructor is called.
+     *
      * @param account The account to which to add the amount.
      * @param amount The amount to add to the account.
      */
     public Entry(IAccount account, double amount) {
-    	this.account = account;
-    	this.amount = amount;
-    	date = new Date();
-    	balanceBefore = account.getBalance();
-    	balanceAfter = balanceBefore + amount;
+        this.account = account;
+        this.amount = amount;
+        date = new Date();
+        balanceBefore = account.getBalance();
+        balanceAfter = balanceBefore + amount;
     }
 
-	public IAccount getAccount() {
-		return account;
-	}
+    @Override
+    public IAccount getAccount() {
+        return account;
+    }
 
-	public double getAmount() {
-		return amount;
-	}
+    @Override
+    public double getAmount() {
+        return amount;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    @Override
+    public Date getDate() {
+        return date;
+    }
 
-	public double getBalanceBefore() {
-		return balanceBefore;
-	}
+    @Override
+    public double getBalanceBefore() {
+        return balanceBefore;
+    }
 
-	public double getBalanceAfter() {
-		return balanceAfter;
-	}
-    
+    @Override
+    public double getBalanceAfter() {
+        return balanceAfter;
+    }
+
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package edu.mum.cs.asd.framework.model;
 
 /**
@@ -11,6 +10,7 @@ package edu.mum.cs.asd.framework.model;
  * @author whassan
  */
 public enum PropertiesEnum {
+
     APP_NATURE("APP_NATURE"),
     DEBIT("DEBIT"),
     CREDIT("CREDIT"),
@@ -18,7 +18,7 @@ public enum PropertiesEnum {
     CHARGE("Charge");
 
     private String val;
-    
+
     private PropertiesEnum(String val) {
         this.val = val;
     }
@@ -26,5 +26,5 @@ public enum PropertiesEnum {
     public String getVal() {
         return val;
     }
-    
+
 }

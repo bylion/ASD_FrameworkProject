@@ -1,9 +1,7 @@
 package edu.mum.cs.asd.framework.model;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,9 +11,9 @@ public class FinancialProperties {
     private Properties properties;
 
     public FinancialProperties() {
-        try {           
+        try {
             properties = new Properties();
-            
+
             properties.load(getClass().getClassLoader().getResourceAsStream("financial.properties"));
         } catch (FileNotFoundException e) {
 
