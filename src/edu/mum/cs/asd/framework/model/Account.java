@@ -61,6 +61,6 @@ public abstract class Account implements IAccount {
 	public abstract double getInterestRate();
 	public abstract String createNotification();
 	public abstract void generateMonthlyReport();
-	public abstract void withdraw();
-	public abstract void deposit();
+	public abstract void withdraw(double amount);
+	public abstract void deposit(double amount);
 }
