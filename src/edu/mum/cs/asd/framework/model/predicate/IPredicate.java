@@ -1,6 +1,6 @@
 package edu.mum.cs.asd.framework.model.predicate;
 
-public interface IPredicate {
+public interface IPredicate<T> {
 
-    public void check();
+    public boolean check(T t);
 }

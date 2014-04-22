@@ -1,9 +1,11 @@
 package edu.mum.cs.asd.framework.model.predicate;
 
-public class InsufficientPredicate implements IPredicate {
+import edu.mum.cs.asd.framework.model.IAccount;
+
+public class InsufficientPredicate implements IPredicate<IAccount> {
 
     @Override
-    public void check() {
+    public boolean check(IAccount a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

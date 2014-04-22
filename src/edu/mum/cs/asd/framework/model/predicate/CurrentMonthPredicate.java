@@ -1,9 +1,11 @@
 package edu.mum.cs.asd.framework.model.predicate;
 
-public class CurrentMonthPredicate implements IPredicate {
+import edu.mum.cs.asd.framework.model.IEntry;
+
+public class CurrentMonthPredicate implements IPredicate<IEntry> {
 
     @Override
-    public void check() {
+    public boolean check(IEntry e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
