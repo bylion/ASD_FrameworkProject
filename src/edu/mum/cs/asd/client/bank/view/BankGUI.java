@@ -10,29 +10,31 @@ import edu.mum.cs.asd.framework.view.GUI;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+public class BankGUI extends GUI {
 
-public class BankGUI extends GUI{
-	public ActionButton Unnamed2;
-	public ActionButton Unnamed3;
-	public BankApplication Unnamed4;
+    public ActionButton addPersonalAcctBtn;
+    public ActionButton addCompanyAcctBtn;
+    public BankApplication Unnamed4;
 
-    public BankGUI(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
-        super(controller, title, nature);
+    public BankGUI(BankApplication application) {
+        super(application, "Bank Application", ApplicationNatureEnum.DEBIT);
     }
 
     @Override
     public JPanel createActionButtons() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JPanel actionsPanel = new JPanel();
+        
+        return actionsPanel;
     }
 
     @Override
     public DefaultTableModel createModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new DefaultTableModel(new Object[][]{}, new String[]{"Name", "Street", "City", "State", "Zip", "P/C", "Ch/S", "Amount"});
     }
 
     @Override
     public void addToDataModel(Customer customer, Account account, DefaultTableModel model) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        model.addRow(new Object[]{customer.});
     }
 
     @Override
