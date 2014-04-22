@@ -18,7 +18,7 @@ public class DepositTest {
 	@Test
 	public void depositTest() {
 		Customer c = new Person(null, null, null, null, null, null, null);
-		IAccount acc = new DummyAccount();
+		IAccount acc = new AlwaysInsufficientAccount();
 		c.addAccount(acc);
 		CommandManager mgr = new CommandManager();
 		IEntry entry = new Entry(acc, 50);

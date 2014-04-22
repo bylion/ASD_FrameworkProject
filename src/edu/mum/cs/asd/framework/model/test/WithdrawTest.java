@@ -16,14 +16,26 @@ import edu.mum.cs.asd.framework.model.command.Withdraw;
 public class WithdrawTest {
 	
 	@Test
-	public void withdrawTest() {
+	public void withdrawInsufficientTest() {
 		Customer c = new Person(null, null, null, null, null, null, null);
-		IAccount acc = new DummyAccount();
+		IAccount acc = new AlwaysInsufficientAccount();
 		c.addAccount(acc);
 		CommandManager mgr = new CommandManager();
 		IEntry entry = new Entry(acc, -50);
 		ICommand withdraw = new Withdraw(entry);
 		mgr.submit(withdraw);
 		assertEquals("Balance of account should be 0.", (int) acc.getBalance(), 0);
+	}
+	
+	@Test
+	public void withdrawSufficientTest() {
+		Customer c = new Person(null, null, null, null, null, null, null);
+		IAccount acc = new AlwaysSufficientAccount();
+		c.addAccount(acc);
+		CommandManager mgr = new CommandManager();
+		IEntry entry = new Entry(acc, -50);
+		ICommand withdraw = new Withdraw(entry);
+		mgr.submit(withdraw);
+		assertEquals("Balance of account should be 0 - withdraw (" + entry.getAmount() + ").", (int) acc.getBalance(), (int) entry.getAmount());
 	}
 }
