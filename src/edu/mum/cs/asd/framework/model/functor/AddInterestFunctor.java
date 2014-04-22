@@ -1,9 +1,11 @@
 package edu.mum.cs.asd.framework.model.functor;
 
-public class AddInterestFunctor implements IFunctor<Void> {
+import edu.mum.cs.asd.framework.model.IAccount;
+
+public class AddInterestFunctor implements IFunctor<IAccount, Void> {
 
     @Override
-    public void compute() {
+    public void compute(IAccount a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

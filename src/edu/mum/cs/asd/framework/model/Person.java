@@ -4,6 +4,17 @@ import java.util.Date;
 
 public class Person extends Customer implements IPerson {
 
-    public Date birthDate;
-    public Company Unnamed1;
+	private Date birthDate;
+	
+    public Person(String name, String street, String city, String state,
+			String zipcode, String email, Date birthDate) {
+    	
+		super(name, street, city, state, zipcode, email);
+		this.birthDate = birthDate;
+	}
+    
+    public Date getBirthDate() {
+    	return birthDate;
+    }
+	
 }

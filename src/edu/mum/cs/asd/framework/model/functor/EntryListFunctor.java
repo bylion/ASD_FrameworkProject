@@ -1,9 +1,11 @@
 package edu.mum.cs.asd.framework.model.functor;
 
-public class EntryListFunctor implements IFunctor<Void> {
+import edu.mum.cs.asd.framework.model.IEntry;
+
+public class EntryListFunctor implements IFunctor<IEntry, Void> {
 
     @Override
-    public void compute() {
+    public void compute(IEntry e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
