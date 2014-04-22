@@ -1,15 +1,26 @@
 package edu.mum.cs.asd.framework.controller;
 
-import edu.mum.cs.asd.framework.model.command.CommandManager;
-import edu.mum.cs.asd.framework.view.TransactionDialog;
+import edu.mum.cs.asd.framework.model.*;
+import edu.mum.cs.asd.framework.model.command.*;
+import edu.mum.cs.asd.framework.view.*;
 
 public class TransactionHandler implements EventHandler {
 
-    public CommandManager Unnamed1;
-    public TransactionDialog Unnamed2;
-
+    private CommandManager cmdManager;
+    private TransactionDialog txDialog;
+ 
     @Override
-    public void handle(Object Factory, Object GUI) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void handle(Factory factory, GUI gui, FinancialCompany fCompany) {
+        //TODO: Create Dialog
+        
+        //TODO: Check Ok button
+        
+        //TODO: Create check existing account
+        
+        //IEntry entry = factory.createEntry();
+        
+        //ICommand cmd = factory.createTransaction(entry);
+//        cmdManager.submit(cmd);
+
     }
 }

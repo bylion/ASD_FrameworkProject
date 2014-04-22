@@ -1,47 +1,60 @@
 package edu.mum.cs.asd.framework.controller;
 
-import edu.mum.cs.asd.framework.model.command.CommandManager;
-import edu.mum.cs.asd.framework.model.Customer;
-import edu.mum.cs.asd.framework.model.FinancialProperties;
+import edu.mum.cs.asd.framework.model.*;
 import edu.mum.cs.asd.framework.model.functor.IFunctor;
-import edu.mum.cs.asd.framework.view.GUI;
+import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.List;
 
 public class FinancialCompany implements ActionListener {
 
-    public Customer Unnamed1;
-    public CommandManager Unnamed3;
-    public FinancialProperties Unnamed4;
-    public GUI Unnamed5;
-    public IFunctor Unnamed6;
+    private List<ICustomer> customers;
+    private FinancialProperties fProperties;
 
-    public void addCustomer() {
-
+    public FinancialCompany() {
+        customers = new LinkedList<ICustomer>();
+    }
+    
+    public void addCustomer(ICustomer customer) {
+        customers.add(customer);
     }
 
-    public void isCustomerExist() {
-
+    public boolean isCustomerExist(String name) {
+        for (ICustomer customer : customers) {
+            if (customer.toString().equals(name)) 
+                return true;
+        }
+        return false;
     }
 
     public void addAccount() {
-
+        //
     }
 
     public void addEntry() {
-
+        //
     }
 
-    public void doAll(Object IFunctor) {
-
+    public void doAll(IFunctor functor) {
+        for(ICustomer customer : customers) {
+            functor.compute(customer);
+        }
     }
 
-    public void searchBy(Object IPredicate) {
-
+    public IAccount searchBy(IPredicate predicate) {
+        for(ICustomer customer : customers) {
+            for (IAccount account : customer.getAccounts()) {
+                if (predicate.check(account))
+                    return account;
+            }
+        }
+        return null;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // TODO: 
     }
 }
