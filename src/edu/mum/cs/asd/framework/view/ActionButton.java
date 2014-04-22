@@ -5,13 +5,18 @@ import javax.swing.JButton;
 
 public class ActionButton extends JButton {
 
-    public EventHandler Unnamed1;
+    public EventHandler handler;
 
-    public void getHandler() {
-
+    public ActionButton(String text, EventHandler handler) {
+        super(text);
+        this.handler = handler;
     }
 
-    public void setHandler() {
+    public EventHandler getHandler() {
+        return handler;
+    }
 
+    public void setHandler(EventHandler handler) {
+        this.handler = handler;
     }
 }
