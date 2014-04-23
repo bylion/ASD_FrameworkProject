@@ -6,6 +6,7 @@ import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class Withdraw implements ICommand {
 
+	private static final String TYPE = "Withdrawal";
     private IEntry entry;
     private IPredicate<IAccount> predicate;
     
@@ -13,6 +14,7 @@ public class Withdraw implements ICommand {
     
     public Withdraw(IEntry entry) {
     	this.entry = entry;
+    	entry.setType(TYPE);
     	this.predicate = entry.getAccount().getInsufficientPredicate();
     	executed = false;
     }
