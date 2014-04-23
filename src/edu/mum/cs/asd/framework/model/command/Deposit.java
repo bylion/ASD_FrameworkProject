@@ -4,10 +4,12 @@ import edu.mum.cs.asd.framework.model.IEntry;
 
 public class Deposit implements ICommand {
 
+	private static final String TYPE = "Deposit";
     private IEntry entry;
     
     public Deposit(IEntry entry) {
     	this.entry = entry;
+    	entry.setType(TYPE);
     }
 
     @Override

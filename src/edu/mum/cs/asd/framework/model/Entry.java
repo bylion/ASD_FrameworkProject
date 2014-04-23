@@ -9,6 +9,7 @@ public class Entry implements IEntry {
     private Date date;
     private double balanceBefore;
     private double balanceAfter;
+    private String type;
 
     /**
      * Create an entry before doing the actual transaction, as when creating an
@@ -51,5 +52,13 @@ public class Entry implements IEntry {
     public double getBalanceAfter() {
         return balanceAfter;
     }
+
+	public final String getType() {
+		return type;
+	}
+
+	public final void setType(String type) {
+		this.type = type;
+	}
 
 }

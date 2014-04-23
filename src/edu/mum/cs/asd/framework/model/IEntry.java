@@ -13,4 +13,8 @@ public interface IEntry {
     public double getBalanceBefore();
 
     public double getBalanceAfter();
+    
+    public void setType(String type);
+    
+    public String getType();
 }
