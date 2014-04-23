@@ -18,7 +18,9 @@ public enum PropertiesEnum {
     CHARGE("Charge"),
     ADD_PERSONAL_ACCT("Add Personal Account"),
     ADD_COMPANY_ACCT("Add Company Account"),
-    ADD_INTEREST("Add Interest")
+    ADD_INTEREST("Add Interest"),
+    ADD_CREDIT_CARD_ACCOUNT("Add Credit-Card Account"),
+    GENERATE_MONTHLY_BILLS("Generate Monthly Bills")
     ;
 
     private String val;

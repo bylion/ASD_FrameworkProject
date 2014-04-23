@@ -5,8 +5,11 @@ import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class Silver extends CreditCardAccount {
 
-    public double INTEREST_RATE = 0.055;
-    public double MIN_PAYMENT = 0.12;
+    public double minPayment = 0.12;
+
+    public Silver() {
+        interestRate = 0.055;
+    }
 
     @Override
     public double getNewMonthlyBalance() {
@@ -20,12 +23,12 @@ public class Silver extends CreditCardAccount {
 
     @Override
     public String getAcctType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Silver";
     }
 
     @Override
     public double getInterestRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return interestRate;
     }
 
     @Override

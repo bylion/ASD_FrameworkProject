@@ -3,10 +3,13 @@ package edu.mum.cs.asd.client.ccard.model;
 import edu.mum.cs.asd.framework.model.IAccount;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
-
 public class Gold extends CreditCardAccount {
-	public double INTEREST_RATE = 0.05;
-	public double MIN_PAYMENT = 0.1;
+
+    public double minPayment = 0.1;
+
+    public Gold() {
+        interestRate = 0.05;
+    }
 
     @Override
     public double getNewMonthlyBalance() {
@@ -20,12 +23,12 @@ public class Gold extends CreditCardAccount {
 
     @Override
     public String getAcctType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Gold";
     }
 
     @Override
     public double getInterestRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return interestRate;
     }
 
     @Override

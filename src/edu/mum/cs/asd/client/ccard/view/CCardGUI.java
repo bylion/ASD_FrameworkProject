@@ -1,17 +1,20 @@
 package edu.mum.cs.asd.client.ccard.view;
 
+import edu.mum.cs.asd.client.bank.controller.AddAccountHandler;
+import edu.mum.cs.asd.framework.controller.AddInterestHandler;
 import edu.mum.cs.asd.framework.controller.FinancialCompany;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.ApplicationNatureEnum;
 import edu.mum.cs.asd.framework.model.Customer;
+import edu.mum.cs.asd.framework.model.PropertiesEnum;
 import edu.mum.cs.asd.framework.view.ActionButton;
 import edu.mum.cs.asd.framework.view.GUI;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class CCardGUI extends GUI {
-    public ActionButton addPersonalAcctBtn;
-    public ActionButton addCompanyAcctBtn;
+    public ActionButton addCardAccountBtn;
+    public ActionButton generateMonthlyBillsBtn;
     
     public CCardGUI(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
         super(controller, title, nature);
@@ -19,12 +22,20 @@ public class CCardGUI extends GUI {
 
     @Override
     public JPanel createActionButtons() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JPanel actionsPanel = new JPanel();
+        
+        addCardAccountBtn = new ActionButton(PropertiesEnum.ADD_PERSONAL_ACCT.getVal(), new AddAccountHandler());
+        generateMonthlyBillsBtn = new ActionButton(PropertiesEnum.ADD_COMPANY_ACCT.getVal(), new AddAccountHandler());
+        
+        actionsPanel.add(addCardAccountBtn);
+        actionsPanel.add(generateMonthlyBillsBtn);
+        
+        return actionsPanel;
     }
 
     @Override
     public DefaultTableModel createModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new DefaultTableModel(new Object[][]{}, new String[]{"Name", "CC Number", "Expired date", "Type", "Balance"});
     }
 
     @Override
@@ -32,7 +43,7 @@ public class CCardGUI extends GUI {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+    @Override 
     public void updateModel() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

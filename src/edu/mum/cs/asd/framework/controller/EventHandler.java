@@ -1,7 +1,9 @@
 package edu.mum.cs.asd.framework.controller;
-import edu.mum.cs.asd.framework.model.*;
+
 import edu.mum.cs.asd.framework.view.*;
+import java.awt.event.ActionEvent;
 
 public interface EventHandler {
-	public void handle(Factory factory, GUI gui, FinancialCompany fCompany);
+
+    public void handle(GUI gui, FinancialCompany fCompany, ActionEvent event);
 }
