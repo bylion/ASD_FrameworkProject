@@ -14,7 +14,7 @@ public class FinancialCompany implements ActionListener {
     private FinancialProperties fProperties;
 
     public FinancialCompany() {
-        customers = new LinkedList<ICustomer>();
+        customers = new LinkedList<>();
     }
     
     public void addCustomer(ICustomer customer) {

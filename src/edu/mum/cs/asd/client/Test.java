@@ -6,9 +6,10 @@
 
 package edu.mum.cs.asd.client;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import edu.mum.cs.asd.client.bank.controller.BankApplication;
 import edu.mum.cs.asd.client.bank.view.BankGUI;
+import edu.mum.cs.asd.client.bank.view.CompanyAccountDialog;
+import edu.mum.cs.asd.client.bank.view.PersonalAccountDialog;
 import edu.mum.cs.asd.framework.controller.FinancialCompany;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.ApplicationNatureEnum;
@@ -59,13 +60,15 @@ public class Test extends GUI{
 //        test.setResizable(true);
         
 //        ReportDialog dialog = new ReportDialog(null, "Report", "Here is my first report man");
-//        dialog.setVisible(true);
         
 //        TransactionDialog dialog = new TransactionDialog(null, "Test", "223233");
-//        dialog.setVisible(true);
         
-        BankGUI bankGUI = new BankGUI(new BankApplication());
-        bankGUI.setVisible(true);
+//        BankGUI bankGUI = new BankGUI(new BankApplication());
+//        bankGUI.setVisible(true);
+        
+//        CompanyAccountDialog dialog = new CompanyAccountDialog(null, "Add ");
+        PersonalAccountDialog dialog = new PersonalAccountDialog(null, "Add");
+        dialog.setVisible(true);
     }
 
     @Override

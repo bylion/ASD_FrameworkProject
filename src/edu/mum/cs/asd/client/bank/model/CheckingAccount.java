@@ -1,13 +1,28 @@
 package edu.mum.cs.asd.client.bank.model;
 
 import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.IAccount;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class CheckingAccount extends Account {
 
-    public double INTEREST_RATE = 0.055;
+    public CheckingAccount() {
+        super();
+        init();
+    }
 
+    public CheckingAccount(Customer customer) {
+        super(customer);
+        init();
+    }
+    
+    
+
+    private void init(){
+        interestRate = 0.055;
+    }
+    
     @Override
     public String getAcctType() {
         return "Ch";
@@ -15,7 +30,7 @@ public class CheckingAccount extends Account {
 
     @Override
     public double getInterestRate() {
-        return INTEREST_RATE;
+        return interestRate;
     }
 
     @Override

@@ -10,8 +10,15 @@ import edu.mum.cs.asd.framework.model.Factory;
 import edu.mum.cs.asd.framework.model.FinancialProperties;
 import edu.mum.cs.asd.framework.model.PropertiesEnum;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -51,7 +58,6 @@ public abstract class GUI extends JFrame {
         datatable.setModel(createModel());
         datatable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scroller.setViewportView(datatable);
-        JPanel eastActionsPanel = new JPanel();
 
         depositBtn = new ActionButton("Deposit", new TransactionHandler());
 //        String appNature = properties.getProperty(PropertiesEnum.APP_NATURE.getVal());
@@ -62,17 +68,42 @@ public abstract class GUI extends JFrame {
         }
         exitBtn = new ActionButton("Exit", new ExitHandler());
         
-        eastActionsPanel.setLayout(new GridLayout(3, 1));
-        eastActionsPanel.add(depositBtn);
-        eastActionsPanel.add(withdrawBtn);
-        eastActionsPanel.add(exitBtn);
-
-        getContentPane().add(eastActionsPanel, BorderLayout.EAST);
+        getContentPane().add(getEastActionsPanel(), BorderLayout.EAST);
         getContentPane().add(scroller, BorderLayout.CENTER);
         getContentPane().add(topActionsPanel, BorderLayout.NORTH);
 
     }
 
+    public JPanel getEastActionsPanel(){
+        JPanel eastActionsPanel = new JPanel();
+        
+//        eastActionsPanel.setLayout(null);
+//        
+//        depositBtn.setBounds(12, 30, 85, 24);
+//        withdrawBtn.setBounds(12, 54, 85, 24);
+//        exitBtn.setBounds(12, 78, 85, 24);
+//        
+//        eastActionsPanel.add(depositBtn);
+//        eastActionsPanel.add(withdrawBtn);
+//        eastActionsPanel.add(exitBtn);
+        
+        eastActionsPanel.setLayout(new BoxLayout(eastActionsPanel, BoxLayout.Y_AXIS));
+        eastActionsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        depositBtn.setAlignmentY(JComponent.CENTER_ALIGNMENT);
+        withdrawBtn.setAlignmentY(JComponent.CENTER_ALIGNMENT);
+        exitBtn.setAlignmentY(JComponent.CENTER_ALIGNMENT);
+        
+        eastActionsPanel.add(Box.createRigidArea(new Dimension(10, 20)));
+        eastActionsPanel.add(depositBtn);
+        eastActionsPanel.add(Box.createRigidArea(new Dimension(10, 40)));
+        eastActionsPanel.add(withdrawBtn);
+        eastActionsPanel.add(Box.createRigidArea(new Dimension(10, 40)));
+        eastActionsPanel.add(exitBtn);
+        
+        return eastActionsPanel;
+    }
+    
     public void updateData(Customer customer, Account account) {
         addToDataModel(customer, account, getModel());
     }

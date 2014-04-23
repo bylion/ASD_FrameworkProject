@@ -14,6 +14,7 @@ public abstract class Account implements IAccount {
 
     protected String accountNumber;
     protected double balance;
+    protected double interestRate;
     protected Customer customer;
     protected List<IEntry> entries;
 
@@ -22,9 +23,18 @@ public abstract class Account implements IAccount {
     public EntryListFunctor Unnamed8;
 
     public Account() {
+        init();
+    }
+
+    private void init(){
         accountNumber = UUID.randomUUID().toString();
         balance = 0;
         entries = new ArrayList<>();
+    }
+    
+    public Account(Customer customer) {
+        this.customer = customer;
+        init();
     }
 
     @Override

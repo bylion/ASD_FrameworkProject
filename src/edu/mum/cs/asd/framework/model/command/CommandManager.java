@@ -7,7 +7,7 @@ public class CommandManager {
     private Stack<ICommand> commandsExecuted;
     
     public CommandManager() {
-    	commandsExecuted = new Stack<ICommand>();
+    	commandsExecuted = new Stack<>();
     }
 
     public void submit(ICommand command) {
@@ -19,5 +19,9 @@ public class CommandManager {
     	if (!commandsExecuted.isEmpty()) {
     		commandsExecuted.pop().undo();
     	}
+    }
+    
+    public void redo(){
+        
     }
 }
