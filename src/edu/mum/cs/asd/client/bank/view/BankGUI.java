@@ -1,7 +1,7 @@
 package edu.mum.cs.asd.client.bank.view;
 
 import edu.mum.cs.asd.client.bank.controller.AddAccountHandler;
-import edu.mum.cs.asd.client.bank.controller.BankApplication;
+import edu.mum.cs.asd.client.bank.controller.Bank;
 import edu.mum.cs.asd.framework.controller.AddInterestHandler;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.ApplicationNatureEnum;
@@ -18,7 +18,7 @@ public class BankGUI extends GUI {
     public ActionButton addCompanyAcctBtn;
     public ActionButton addInterestBtn;
 
-    public BankGUI(BankApplication application) {
+    public BankGUI(Bank application) {
         super(application, "Bank Application", ApplicationNatureEnum.DEBIT);
     }
 
@@ -39,7 +39,7 @@ public class BankGUI extends GUI {
 
     @Override
     public DefaultTableModel createModel() {
-        return new DefaultTableModel(new Object[][]{}, new String[]{"Name", "Street", "City", "State", "Zip", "P/C", "Ch/S", "Amount"});
+        return new DefaultTableModel(new Object[][]{}, new String[]{"Acct Nr", "Name", "Street", "City", "State", "Zip", "P/C", "Ch/S", "Amount"});
     }
 
     @Override
@@ -51,8 +51,8 @@ public class BankGUI extends GUI {
     @Override
     public void updateModel() {
         for (int i = 0; i < getModel().getRowCount(); i++) {
-            Account account = (Account)getModel().getValueAt(i, 6);
-            getModel().setValueAt(account.getBalance(), i, 7);
+            Account account = (Account)getModel().getValueAt(i, getModel().getColumnCount()-2);
+            getModel().setValueAt(account.getBalance(), i, getModel().getColumnCount()-1);
         }
     }
 }

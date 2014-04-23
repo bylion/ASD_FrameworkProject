@@ -6,7 +6,7 @@
 
 package edu.mum.cs.asd.client;
 
-import edu.mum.cs.asd.client.bank.controller.BankApplication;
+import edu.mum.cs.asd.client.bank.controller.Bank;
 import edu.mum.cs.asd.client.bank.view.BankGUI;
 import edu.mum.cs.asd.client.bank.view.CompanyAccountDialog;
 import edu.mum.cs.asd.client.bank.view.PersonalAccountDialog;
