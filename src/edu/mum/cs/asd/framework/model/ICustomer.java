@@ -11,4 +11,6 @@ public interface ICustomer {
     public List<IAccount> getAccounts();
 
     public void sendEmail(String email);
+    
+    public String getType();
 }

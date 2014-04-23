@@ -10,12 +10,12 @@ public class SavingAccount extends Account {
 
     @Override
     public String getAcctType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "S";
     }
 
     @Override
     public double getInterestRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return INTEREST_RATE;
     }
 
     @Override
@@ -40,11 +40,6 @@ public class SavingAccount extends Account {
 
     @Override
     public IPredicate<IAccount> getInsufficientPredicate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public double getBalance() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

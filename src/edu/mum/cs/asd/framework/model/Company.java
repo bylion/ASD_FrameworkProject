@@ -32,4 +32,9 @@ public class Company extends Customer implements ICompany {
         return numOfEmployees;
     }
 
+    @Override
+    public String getType() {
+        return "C";
+    }
+
 }

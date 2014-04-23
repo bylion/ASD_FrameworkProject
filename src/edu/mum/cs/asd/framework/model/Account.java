@@ -62,6 +62,11 @@ public abstract class Account implements IAccount {
     }
 
     @Override
+    public double getBalance() {
+        return balance;
+    }
+
+    @Override
     public abstract String getAcctType();
 
     public abstract double getInterestRate();
@@ -78,4 +83,10 @@ public abstract class Account implements IAccount {
 
     @Override
     public abstract IPredicate<IAccount> getInsufficientPredicate();
+
+    @Override
+    public String toString() {
+        return getAcctType();
+    }
+    
 }

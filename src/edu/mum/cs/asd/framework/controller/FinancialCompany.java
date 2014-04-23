@@ -57,4 +57,10 @@ public class FinancialCompany implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO: 
     }
+
+    public List<ICustomer> getCustomers() {
+        return customers;
+    }
+    
+    
 }

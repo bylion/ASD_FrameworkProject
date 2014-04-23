@@ -85,6 +85,10 @@ public abstract class GUI extends JFrame {
         return (DefaultTableModel) datatable.getModel();
     }
 
+    public FinancialCompany getController() {
+        return controller;
+    }
+
     public abstract JPanel createActionButtons();
 
     public abstract DefaultTableModel createModel();

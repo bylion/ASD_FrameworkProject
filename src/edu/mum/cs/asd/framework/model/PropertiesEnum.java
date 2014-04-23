@@ -15,7 +15,11 @@ public enum PropertiesEnum {
     DEBIT("DEBIT"),
     CREDIT("CREDIT"),
     WITHDRAW("Withdraw"),
-    CHARGE("Charge");
+    CHARGE("Charge"),
+    ADD_PERSONAL_ACCT("Add Personal Account"),
+    ADD_COMPANY_ACCT("Add Company Account"),
+    ADD_INTEREST("Add Interest")
+    ;
 
     private String val;
 

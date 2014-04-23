@@ -17,4 +17,9 @@ public class Person extends Customer implements IPerson {
         return birthDate;
     }
 
+    @Override
+    public String getType() {
+        return "P";
+    }
+
 }
