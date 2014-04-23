@@ -15,6 +15,10 @@ import javax.swing.table.DefaultTableModel;
 public class CCardGUI extends GUI {
     public ActionButton addCardAccountBtn;
     public ActionButton generateMonthlyBillsBtn;
+
+    public CCardGUI(FinancialCompany controller) {
+        super(controller, "Credit-Card Processing Application", ApplicationNatureEnum.CREDIT);
+    }
     
     public CCardGUI(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
         super(controller, title, nature);
@@ -27,6 +31,8 @@ public class CCardGUI extends GUI {
         addCardAccountBtn = new ActionButton(PropertiesEnum.ADD_CREDIT_CARD_ACCOUNT.getVal(), new AddAccountHandler());
         generateMonthlyBillsBtn = new ActionButton(PropertiesEnum.GENERATE_MONTHLY_BILLS.getVal(), new GenerateReportHandler());
         
+        addCardAccountBtn.addActionListener(controller);
+        generateMonthlyBillsBtn.addActionListener(controller);
         actionsPanel.add(addCardAccountBtn);
         actionsPanel.add(generateMonthlyBillsBtn);
         
@@ -40,12 +46,15 @@ public class CCardGUI extends GUI {
 
     @Override
     public void addToDataModel(Customer customer, Account account, DefaultTableModel model) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        model.addRow(new Object[]{customer, account.getVal("accountNumbr"), account.getVal("expireDate"), account, account.getVal("balance")});
     }
 
     @Override 
     public void updateModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < getModel().getRowCount(); i++) {
+            Account account = (Account)getModel().getValueAt(i, getModel().getColumnCount()-2);
+            getModel().setValueAt(account.getBalance(), i, getModel().getColumnCount()-1);
+        }
     }
 
 }

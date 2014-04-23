@@ -1,11 +1,10 @@
 package edu.mum.cs.asd.client.ccard.model;
 
 import edu.mum.cs.asd.framework.model.Account;
-import java.util.Date;
 
 public abstract class CreditCardAccount extends Account {
 
-    private Date expireDate;
+    private String expireDate;
     private double lastMonthBalance;
 
     public double getLastMonthBalance() {
@@ -18,6 +17,16 @@ public abstract class CreditCardAccount extends Account {
 
     public double getTotalMonthlyCharges() {
         return 0.0;
+    }
+
+    @Override
+    public String getVal(String key) {
+        switch (key) {
+            case "expireDate":
+                return expireDate;
+            default:
+                return super.getVal(key);
+        }
     }
 
     public abstract double getNewMonthlyBalance();

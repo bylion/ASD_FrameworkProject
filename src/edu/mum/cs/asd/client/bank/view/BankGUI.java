@@ -30,6 +30,10 @@ public class BankGUI extends GUI {
         addCompanyAcctBtn = new ActionButton(PropertiesEnum.ADD_COMPANY_ACCT.getVal(), new AddAccountHandler("COMPANY"));
         addInterestBtn = new ActionButton(PropertiesEnum.ADD_INTEREST.getVal(), new AddInterestHandler());
         
+        addPersonalAcctBtn.addActionListener(controller);
+        addCompanyAcctBtn.addActionListener(controller);
+        addInterestBtn.addActionListener(controller);
+        
         actionsPanel.add(addPersonalAcctBtn);
         actionsPanel.add(addCompanyAcctBtn);
         actionsPanel.add(addInterestBtn);

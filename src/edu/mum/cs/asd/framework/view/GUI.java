@@ -27,16 +27,18 @@ import javax.swing.table.DefaultTableModel;
 
 public abstract class GUI extends JFrame {
 
-    private JPanel topActionsPanel;
-    private JScrollPane scroller;
+    protected JPanel topActionsPanel;
+    protected JScrollPane scroller;
 
-    private JTable datatable;
-    private ActionButton depositBtn;
-    private ActionButton withdrawBtn;
-    private ActionButton exitBtn;
-    public Factory factory;
-    private FinancialCompany controller;
-    private FinancialProperties properties;
+    protected JTable datatable;
+    protected ActionButton depositBtn;
+    protected ActionButton withdrawBtn;
+    protected ActionButton exitBtn;
+    protected ActionButton undoBtn;
+    protected ActionButton redoBtn;
+    protected Factory factory;
+    protected FinancialCompany controller;
+    protected FinancialProperties properties;
 
     public GUI(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
         super(title);
@@ -60,13 +62,16 @@ public abstract class GUI extends JFrame {
         scroller.setViewportView(datatable);
 
         depositBtn = new ActionButton("Deposit", new TransactionHandler());
+        depositBtn.addActionListener(controller);
 //        String appNature = properties.getProperty(PropertiesEnum.APP_NATURE.getVal());
         if (nature.equals(ApplicationNatureEnum.DEBIT)) {
             withdrawBtn = new ActionButton(PropertiesEnum.WITHDRAW.getVal(), new TransactionHandler());
         }else{
             withdrawBtn = new ActionButton(PropertiesEnum.CHARGE.getVal(), new TransactionHandler());
         }
+        withdrawBtn.addActionListener(controller);
         exitBtn = new ActionButton("Exit", new ExitHandler());
+        exitBtn.addActionListener(controller);
         
         getContentPane().add(getEastActionsPanel(), BorderLayout.EAST);
         getContentPane().add(scroller, BorderLayout.CENTER);
@@ -76,16 +81,6 @@ public abstract class GUI extends JFrame {
 
     public JPanel getEastActionsPanel(){
         JPanel eastActionsPanel = new JPanel();
-        
-//        eastActionsPanel.setLayout(null);
-//        
-//        depositBtn.setBounds(12, 30, 85, 24);
-//        withdrawBtn.setBounds(12, 54, 85, 24);
-//        exitBtn.setBounds(12, 78, 85, 24);
-//        
-//        eastActionsPanel.add(depositBtn);
-//        eastActionsPanel.add(withdrawBtn);
-//        eastActionsPanel.add(exitBtn);
         
         eastActionsPanel.setLayout(new BoxLayout(eastActionsPanel, BoxLayout.Y_AXIS));
         eastActionsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

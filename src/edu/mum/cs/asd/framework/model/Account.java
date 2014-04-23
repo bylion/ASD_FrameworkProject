@@ -26,12 +26,12 @@ public abstract class Account implements IAccount {
         init();
     }
 
-    private void init(){
+    private void init() {
         accountNumber = UUID.randomUUID().toString();
         balance = 0;
         entries = new ArrayList<>();
     }
-    
+
     public Account(Customer customer) {
         this.customer = customer;
         init();
@@ -98,5 +98,19 @@ public abstract class Account implements IAccount {
     public String toString() {
         return getAcctType();
     }
-    
+
+    @Override
+    public String getVal(String key) {
+        switch (key) {
+            case "accountNumbr":
+                return accountNumber;
+            case "balance":
+                return "" + balance;
+            case "interestRate":
+                return "" + interestRate;
+            default:
+                return null;
+        }
+    }
+
 }

@@ -24,4 +24,6 @@ public interface IAccount {
     public void deposit(double amount);
 
     public IPredicate<IAccount> getInsufficientPredicate();
+    
+    public String getVal(String key);
 }

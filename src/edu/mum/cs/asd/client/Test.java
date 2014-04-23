@@ -10,6 +10,8 @@ import edu.mum.cs.asd.client.bank.controller.Bank;
 import edu.mum.cs.asd.client.bank.view.BankGUI;
 import edu.mum.cs.asd.client.bank.view.CompanyAccountDialog;
 import edu.mum.cs.asd.client.bank.view.PersonalAccountDialog;
+import edu.mum.cs.asd.client.ccard.controller.Card;
+import edu.mum.cs.asd.client.ccard.view.CCardGUI;
 import edu.mum.cs.asd.framework.controller.FinancialCompany;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.ApplicationNatureEnum;
@@ -66,9 +68,11 @@ public class Test extends GUI{
 //        BankGUI bankGUI = new BankGUI(new BankApplication());
 //        bankGUI.setVisible(true);
         
+        CCardGUI cCardGUI = new CCardGUI(new Card());
+        cCardGUI.setVisible(true);
 //        CompanyAccountDialog dialog = new CompanyAccountDialog(null, "Add ");
-        PersonalAccountDialog dialog = new PersonalAccountDialog(null, "Add");
-        dialog.setVisible(true);
+//        PersonalAccountDialog dialog = new PersonalAccountDialog(null, "Add");
+//        dialog.setVisible(true);
     }
 
     @Override
