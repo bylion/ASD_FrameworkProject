@@ -1,16 +1,20 @@
 package edu.mum.cs.asd.framework.model.functor;
 
 import edu.mum.cs.asd.framework.model.IEntry;
+import java.util.ArrayList;
+import java.util.List;
 
-public class EntryListFunctor implements IFunctor<IEntry, Void> {
+public class EntryListFunctor implements IFunctor<IEntry, List<IEntry>> {
+
+    private List<IEntry> entries = new ArrayList<>();
 
     @Override
     public void compute(IEntry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entries.add(e);
     }
 
     @Override
-    public Void getValue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<IEntry> getValue() {
+        return entries;
     }
 }
