@@ -1,7 +1,7 @@
 package edu.mum.cs.asd.client.ccard.view;
 
-import edu.mum.cs.asd.client.bank.controller.AddAccountHandler;
-import edu.mum.cs.asd.framework.controller.AddInterestHandler;
+import edu.mum.cs.asd.client.ccard.controller.AddAccountHandler;
+import edu.mum.cs.asd.client.ccard.controller.GenerateReportHandler;
 import edu.mum.cs.asd.framework.controller.FinancialCompany;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.ApplicationNatureEnum;
@@ -24,8 +24,8 @@ public class CCardGUI extends GUI {
     public JPanel createActionButtons() {
         JPanel actionsPanel = new JPanel();
         
-        addCardAccountBtn = new ActionButton(PropertiesEnum.ADD_PERSONAL_ACCT.getVal(), new AddAccountHandler());
-        generateMonthlyBillsBtn = new ActionButton(PropertiesEnum.ADD_COMPANY_ACCT.getVal(), new AddAccountHandler());
+        addCardAccountBtn = new ActionButton(PropertiesEnum.ADD_CREDIT_CARD_ACCOUNT.getVal(), new AddAccountHandler());
+        generateMonthlyBillsBtn = new ActionButton(PropertiesEnum.GENERATE_MONTHLY_BILLS.getVal(), new GenerateReportHandler());
         
         actionsPanel.add(addCardAccountBtn);
         actionsPanel.add(generateMonthlyBillsBtn);

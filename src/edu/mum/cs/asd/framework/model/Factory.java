@@ -1,9 +1,5 @@
 package edu.mum.cs.asd.framework.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Map;
 
 import edu.mum.cs.asd.framework.model.command.Deposit;
@@ -12,24 +8,32 @@ import edu.mum.cs.asd.framework.model.command.Withdraw;
 
 public abstract class Factory implements IFactory {
 
+    protected static Factory factory;
+
+    public static void setFactory(Factory factory) {
+        Factory.factory = factory;
+    }
+
+    public static Factory getInstance() {
+        if (factory == null) {
+            throw new NullPointerException("Not initialized");
+        }
+        return factory;
+    }
+
     @Override
     /**
-     * @param attributes all the attributes entered by the user: 
-     * - name 
-     * - city 
-     * - state 
-     * - zipcode 
-     * - email
+     * @param attributes all the attributes entered by the user: - name - city -
+     * state - zipcode - email
      *
-     * and one of the following: 
-     * - numOfEmployees 
-     * - birthDate (formatted mm/dd/yyyy)
+     * and one of the following: - numOfEmployees - birthDate (formatted
+     * mm/dd/yyyy)
      *
      * The keys of the attributes have to match the above, and should be
      * verified, meaning that numOfEmployees should be an integer, and birthDate
      * should be formatted as stated.
      */
-    public ICustomer createCustomer(Map<String, String> attributes) {
+    public Customer createCustomer(Map<String, String> attributes) {
         String name = attributes.get("name");
         String street = attributes.get("street");
         String city = attributes.get("city");
@@ -40,22 +44,17 @@ public abstract class Factory implements IFactory {
         if (attributes.get("numOfEmployees") != null) {
             return new Company(name, street, city, state, zipcode, email, Integer.parseInt(attributes.get("numOfEmployees")));
         } else {
-            try {
-                Date birthDate = new SimpleDateFormat("mm/dd/yyyy", Locale.ENGLISH).parse(attributes.get("birthDate"));
-                return new Person(name, street, city, state, zipcode, email, birthDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            return new Person(name, street, city, state, zipcode, email, attributes.get("birthDate"));
         }
-        System.out.println("Creating a null customer because of wrong input formatting.");
-        return null;
+//        System.out.println("Creating a null customer because of wrong input formatting.");
+//        return null;
     }
 
     @Override
-    public abstract IAccount createAccount();
+    public abstract Account createAccount(Map<String, String> attributes, ICustomer customer);
 
     @Override
-    public IEntry createEntry(IAccount account, double amount) {
+    public Entry createEntry(IAccount account, double amount) {
         return new Entry(account, amount);
     }
 

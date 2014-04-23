@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FinancialCompany implements ActionListener {
 
-    protected List<ICustomer> customers;
+    protected List<Customer> customers;
     protected FinancialProperties fProperties;
     protected GUI gui;
 
@@ -35,7 +35,7 @@ public class FinancialCompany implements ActionListener {
     }
     
     
-    public void addCustomer(ICustomer customer) {
+    public void addCustomer(Customer customer) {
         customers.add(customer);
     }
 
@@ -77,9 +77,15 @@ public class FinancialCompany implements ActionListener {
         action.handle(gui, this, e);
     }
 
-    public List<ICustomer> getCustomers() {
+    public List<Customer> getCustomers() {
         return customers;
     }
     
-    
+    public Customer getCustomer(String name){
+        for (Customer customer : customers) {
+            if(customer.getName().equals(name))
+                return customer;
+        }
+        return null;
+    }
 }

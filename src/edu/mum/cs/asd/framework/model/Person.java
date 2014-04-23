@@ -1,25 +1,30 @@
 package edu.mum.cs.asd.framework.model;
 
-import java.util.Date;
-
 public class Person extends Customer implements IPerson {
 
-    private Date birthDate;
+    private String birthDate;
 
     public Person(String name, String street, String city, String state,
-            String zipcode, String email, Date birthDate) {
+            String zipcode, String email, String birthDate) {
 
         super(name, street, city, state, zipcode, email);
         this.birthDate = birthDate;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
     @Override
     public String getType() {
         return "P";
+    }
+
+    @Override
+    public String getVal(String key) {
+        if("noOfEmployees".equals(key))
+            return birthDate;
+        return super.getVal(key);
     }
 
 }

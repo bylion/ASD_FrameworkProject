@@ -37,4 +37,12 @@ public class Company extends Customer implements ICompany {
         return "C";
     }
 
+    @Override
+    public String getVal(String key) {
+        if("noOfEmployees".equals(key))
+            return ""+numOfEmployees;
+        return super.getVal(key);
+    }
+
+    
 }

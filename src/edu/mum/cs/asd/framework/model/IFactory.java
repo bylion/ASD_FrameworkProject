@@ -6,11 +6,11 @@ import edu.mum.cs.asd.framework.model.command.ICommand;
 
 public interface IFactory {
 
-    public ICustomer createCustomer(Map<String, String> attributes);
+    public Customer createCustomer(Map<String, String> attributes);
 
-    public IAccount createAccount();
+    public Account createAccount(Map<String, String> attributes, ICustomer customer);
 
-    public IEntry createEntry(IAccount account, double amount);
+    public Entry createEntry(IAccount account, double amount);
 
     public ICommand createTransaction(IEntry entry);
 }

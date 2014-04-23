@@ -78,4 +78,22 @@ public abstract class Customer implements ICustomer {
         return name;
     }
 
+    @Override
+    public String getVal(String key) {
+        switch (key) {
+            case "name":
+                return name;
+            case "street":
+                return street;
+            case "city":
+                return city;
+            case "zip":
+                return zipcode;
+            case "state":
+                return state;
+            default:
+                return null;
+        }
+    }
+
 }

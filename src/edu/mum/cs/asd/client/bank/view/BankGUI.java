@@ -26,8 +26,8 @@ public class BankGUI extends GUI {
     public JPanel createActionButtons() {
         JPanel actionsPanel = new JPanel();
         
-        addPersonalAcctBtn = new ActionButton(PropertiesEnum.ADD_PERSONAL_ACCT.getVal(), new AddAccountHandler());
-        addCompanyAcctBtn = new ActionButton(PropertiesEnum.ADD_COMPANY_ACCT.getVal(), new AddAccountHandler());
+        addPersonalAcctBtn = new ActionButton(PropertiesEnum.ADD_PERSONAL_ACCT.getVal(), new AddAccountHandler("PERSONAL"));
+        addCompanyAcctBtn = new ActionButton(PropertiesEnum.ADD_COMPANY_ACCT.getVal(), new AddAccountHandler("COMPANY"));
         addInterestBtn = new ActionButton(PropertiesEnum.ADD_INTEREST.getVal(), new AddInterestHandler());
         
         actionsPanel.add(addPersonalAcctBtn);

@@ -13,4 +13,6 @@ public interface ICustomer {
     public void sendEmail(String email);
     
     public String getType();
+    
+    public String getVal(String key);
 }
