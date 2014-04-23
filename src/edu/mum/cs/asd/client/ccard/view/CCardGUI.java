@@ -4,12 +4,15 @@ import edu.mum.cs.asd.framework.controller.FinancialCompany;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.ApplicationNatureEnum;
 import edu.mum.cs.asd.framework.model.Customer;
+import edu.mum.cs.asd.framework.view.ActionButton;
 import edu.mum.cs.asd.framework.view.GUI;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class CCardGUI extends GUI {
-
+    public ActionButton addPersonalAcctBtn;
+    public ActionButton addCompanyAcctBtn;
+    
     public CCardGUI(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
         super(controller, title, nature);
     }
