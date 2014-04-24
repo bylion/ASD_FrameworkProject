@@ -21,7 +21,7 @@ public class DepositTest {
 		IAccount acc = new AlwaysInsufficientAccount();
 		c.addAccount(acc);
 		CommandManager mgr = new CommandManager();
-		IEntry entry = new Entry(acc, 50);
+		Entry entry = new Entry(acc, 50);
 		ICommand deposit = new Deposit(entry);
 		mgr.submit(deposit);
 		assertEquals("Balance of account should be 0 + deposit (" + entry.getAmount() + ").", (int) acc.getBalance(), (int) entry.getAmount());

@@ -1,6 +1,7 @@
 package edu.mum.cs.asd.framework.model.test;
 
 import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.IAccount;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
@@ -29,7 +30,7 @@ public class AlwaysSufficientAccount extends Account {
 	}
 
 	@Override
-	public String createNotification() {
+	public String createNotification(Entry e) {
 		return "Notification";
 	}
 
@@ -39,13 +40,13 @@ public class AlwaysSufficientAccount extends Account {
 	}
 
 	@Override
-	public void withdraw(double amount) {
-		balance -= amount;
+	public void withdraw(Entry e) {
+		balance -= e.getAmount();
 	}
 
 	@Override
-	public void deposit(double amount) {
-		balance += amount;
+	public void deposit(Entry e) {
+		balance += e.getAmount();
 	}
 
 	@Override
