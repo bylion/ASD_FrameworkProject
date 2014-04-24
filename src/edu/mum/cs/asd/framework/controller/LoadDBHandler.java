@@ -18,12 +18,14 @@ public class LoadDBHandler implements EventHandler {
     @Override
     public void handle(GUI gui, FinancialCompany fCompany, ActionEvent event) {
         File file = new File("financialData");
+        List<Customer> customers = null;
+        DefaultTableModel tableModel = null;
         try {
             if (file.exists()) {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
-                List<Customer> customers = (List<Customer>) objectInputStream.readObject();
-                DefaultTableModel tableModel = (DefaultTableModel) objectInputStream.readObject();
-                
+                customers = (List<Customer>) objectInputStream.readObject();
+                tableModel = (DefaultTableModel) objectInputStream.readObject();
+
                 if (customers != null) {
                     fCompany.getCustomers().addAll(customers);
                 }
@@ -37,6 +39,10 @@ public class LoadDBHandler implements EventHandler {
             Logger.getLogger(LoadDBHandler.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LoadDBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (customers == null || tableModel == null) {
+                file.delete();
+            }
         }
     }
 }

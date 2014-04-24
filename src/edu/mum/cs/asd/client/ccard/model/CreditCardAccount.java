@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class CreditCardAccount extends Account {
 
-    private String expireDate;
+    protected String expireDate;
 
     public double getLastMonthBalance(List<Entry> entrys) {
         double lastBalance = 0;

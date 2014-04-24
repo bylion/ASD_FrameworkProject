@@ -1,8 +1,9 @@
 package edu.mum.cs.asd.framework.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface ICustomer {
+public interface ICustomer extends Serializable{
 
     public void addAccount(Account account);
 

@@ -10,6 +10,7 @@ public class BankFactory extends Factory {
     @Override
     public Account createAccount(Map<String, String> attributes, Customer customer) {
         //Produce account by fields in GUI
+        
         switch (attributes.get("type")) {
             case "checking":
                 return new CheckingAccount(customer);

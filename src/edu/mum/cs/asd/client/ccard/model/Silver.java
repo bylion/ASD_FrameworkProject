@@ -2,13 +2,17 @@ package edu.mum.cs.asd.client.ccard.model;
 
 import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class Silver extends CreditCardAccount {
 
     public double minPayment = 0.12;
 
-    public Silver() {
+    public Silver(String ccNumber, String expDate, Customer customer) {
+        this.customer = customer;
+        this.accountNumber = ccNumber;
+        this.expireDate = expDate;
         interestRate = 0.055;
     }
 

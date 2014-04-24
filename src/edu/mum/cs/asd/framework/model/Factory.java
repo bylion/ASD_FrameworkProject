@@ -3,9 +3,7 @@ package edu.mum.cs.asd.framework.model;
 import java.util.Map;
 
 import edu.mum.cs.asd.framework.model.command.Deposit;
-import edu.mum.cs.asd.framework.model.command.Deserialize;
 import edu.mum.cs.asd.framework.model.command.ICommand;
-import edu.mum.cs.asd.framework.model.command.Serialize;
 import edu.mum.cs.asd.framework.model.command.Withdraw;
 
 public abstract class Factory implements IFactory {

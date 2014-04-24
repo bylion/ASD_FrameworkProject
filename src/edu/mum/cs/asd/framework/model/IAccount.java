@@ -2,8 +2,9 @@ package edu.mum.cs.asd.framework.model;
 
 import edu.mum.cs.asd.framework.model.functor.IFunctor;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
+import java.io.Serializable;
 
-public interface IAccount {
+public interface IAccount extends Serializable{
 
     public String getAccountNumber();
 

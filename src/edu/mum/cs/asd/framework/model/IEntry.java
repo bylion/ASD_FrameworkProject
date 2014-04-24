@@ -1,8 +1,9 @@
 package edu.mum.cs.asd.framework.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public interface IEntry {
+public interface IEntry extends Serializable{
 
     public Account getAccount();
 
