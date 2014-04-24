@@ -114,8 +114,12 @@ public abstract class GUI extends JFrame {
         datatable.setValueAt(obj, datatable.getSelectedRow(), id);
     }
 
-    protected DefaultTableModel getModel() {
+    public DefaultTableModel getModel() {
         return (DefaultTableModel) datatable.getModel();
+    }
+    
+    public void getModel(DefaultTableModel model) {
+        datatable.setModel(model);
     }
 
     public FinancialCompany getController() {

@@ -7,8 +7,6 @@ import org.junit.Test;
 
 import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Entry;
-import edu.mum.cs.asd.framework.model.IAccount;
-import edu.mum.cs.asd.framework.model.IEntry;
 import edu.mum.cs.asd.framework.model.Person;
 import edu.mum.cs.asd.framework.model.command.CommandManager;
 import edu.mum.cs.asd.framework.model.command.Deposit;

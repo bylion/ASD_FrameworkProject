@@ -60,11 +60,11 @@ public class CCardAccountDialog extends AccountDialog {
         goldBtn.setBounds(0, 0, 150, 24);
         btnGroup.add(goldBtn);
         
-        silverBtn = new JRadioButton("Savings");
+        silverBtn = new JRadioButton("Silver");
         silverBtn.setBounds(0, 24, 150, 24);
         btnGroup.add(silverBtn);
         
-        bronzeBtn = new JRadioButton("Savings");
+        bronzeBtn = new JRadioButton("Bronze");
         bronzeBtn.setBounds(0, 48, 150, 24);
         btnGroup.add(bronzeBtn);
         
