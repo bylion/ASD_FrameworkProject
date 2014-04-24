@@ -1,7 +1,7 @@
 package edu.mum.cs.asd.client.ccard.model;
 
 import edu.mum.cs.asd.framework.model.Entry;
-import edu.mum.cs.asd.framework.model.IAccount;
+import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class Bronze extends CreditCardAccount {
@@ -38,7 +38,7 @@ public class Bronze extends CreditCardAccount {
     }
 
     @Override
-    public IPredicate<IAccount> getInsufficientPredicate() {
+    public IPredicate<Account> getInsufficientPredicate() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

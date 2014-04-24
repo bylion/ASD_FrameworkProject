@@ -91,7 +91,7 @@ public abstract class Account implements IAccount {
     public abstract void deposit(Entry e);
 
     @Override
-    public abstract IPredicate<IAccount> getInsufficientPredicate();
+    public abstract IPredicate<Account> getInsufficientPredicate();
 
     @Override
     public String toString() {

@@ -23,7 +23,7 @@ public interface IAccount {
 
     public void deposit(Entry e);
 
-    public IPredicate<IAccount> getInsufficientPredicate();
+    public IPredicate<Account> getInsufficientPredicate();
     
     public String getVal(String key);
 }

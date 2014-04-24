@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Entry implements IEntry {
 
-    private IAccount account;
+    private Account account;
     private double amount;
     private Date date;
     private double balanceBefore;
@@ -22,7 +22,7 @@ public class Entry implements IEntry {
      * @param type The transaction type caused this entry (Deposit, Withdraw,
      * Interest)
      */
-    public Entry(IAccount account, double amount, TransactionTypeEnum type) {
+    public Entry(Account account, double amount, TransactionTypeEnum type) {
         this.account = account;
         this.amount = amount;
         date = new Date();
@@ -50,7 +50,7 @@ public class Entry implements IEntry {
     }
 
     @Override
-    public IAccount getAccount() {
+    public Account getAccount() {
         return account;
     }
 

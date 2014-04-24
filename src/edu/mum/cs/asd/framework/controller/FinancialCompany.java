@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 
 public class FinancialCompany implements ActionListener {
 
@@ -51,7 +50,7 @@ public class FinancialCompany implements ActionListener {
     }
 
     public boolean isCustomerExist(String name) {
-        for (ICustomer customer : customers) {
+        for (Customer customer : customers) {
             if (customer.toString().equals(name)) {
                 return true;
             }
@@ -68,14 +67,14 @@ public class FinancialCompany implements ActionListener {
     }
 
     public void doAll(IFunctor functor) {
-        for (ICustomer customer : customers) {
+        for (Customer customer : customers) {
             functor.compute(customer);
         }
     }
 
-    public IAccount searchBy(IPredicate predicate) {
-        for (ICustomer customer : customers) {
-            for (IAccount account : customer.getAccounts()) {
+    public Account searchBy(IPredicate predicate) {
+        for (Customer customer : customers) {
+            for (Account account : customer.getAccounts()) {
                 if (predicate.check(account)) {
                     return account;
                 }

@@ -7,6 +7,7 @@ public interface ICommand {
     
     public static final int DEPOSIT = 1;
     public static final int WITHDRAW = 2;
-    public static final int SERIALIZE = 3;
-    public static final int DESERIALIZE = 4;
+    public static final int INTEREST = 3;
+    public static final int SERIALIZE = 4;
+    public static final int DESERIALIZE = 5;
 }

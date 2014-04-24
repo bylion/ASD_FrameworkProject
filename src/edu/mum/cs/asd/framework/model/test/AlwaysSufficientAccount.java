@@ -2,7 +2,7 @@ package edu.mum.cs.asd.framework.model.test;
 
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Entry;
-import edu.mum.cs.asd.framework.model.IAccount;
+import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class AlwaysSufficientAccount extends Account {
@@ -51,7 +51,7 @@ public class AlwaysSufficientAccount extends Account {
     }
 
     @Override
-    public IPredicate<IAccount> getInsufficientPredicate() {
+    public IPredicate<Account> getInsufficientPredicate() {
         return new AlwaysSufficientPredicate();
     }
 }

@@ -53,10 +53,10 @@ public abstract class Factory implements IFactory {
     }
 
     @Override
-    public abstract Account createAccount(Map<String, String> attributes, ICustomer customer);
+    public abstract Account createAccount(Map<String, String> attributes, Customer customer);
 
     @Override
-    public Entry createEntry(IAccount account, double amount, TransactionTypeEnum type) {
+    public Entry createEntry(Account account, double amount, TransactionTypeEnum type) {
         return new Entry(account, amount, type);
     }
 
@@ -64,6 +64,8 @@ public abstract class Factory implements IFactory {
     public ICommand createTransaction(Entry entry, int type) {
         switch (type) {
             case ICommand.DEPOSIT:
+                return new Deposit(entry);
+            case ICommand.INTEREST:
                 return new Deposit(entry);
             case ICommand.WITHDRAW:
                 return new Withdraw(entry);

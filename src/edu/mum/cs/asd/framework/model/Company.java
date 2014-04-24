@@ -16,18 +16,22 @@ public class Company extends Customer implements ICompany {
         employees = new ArrayList<>();
     }
 
+    @Override
     public void addEmployee(IPerson person) {
         employees.add(person);
     }
 
+    @Override
     public void removeEmployee(IPerson person) {
         employees.remove(person);
     }
 
+    @Override
     public List<IPerson> getEmployees() {
         return employees;
     }
 
+    @Override
     public int getNumOfEmployees() {
         return numOfEmployees;
     }
@@ -39,10 +43,10 @@ public class Company extends Customer implements ICompany {
 
     @Override
     public String getVal(String key) {
-        if("noOfEmployees".equals(key))
-            return ""+numOfEmployees;
+        if ("noOfEmployees".equals(key)) {
+            return "" + numOfEmployees;
+        }
         return super.getVal(key);
     }
 
-    
 }

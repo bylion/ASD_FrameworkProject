@@ -1,14 +1,14 @@
 package edu.mum.cs.asd.framework.model.command;
 
 import edu.mum.cs.asd.framework.model.Entry;
-import edu.mum.cs.asd.framework.model.IAccount;
+import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class Withdraw implements ICommand {
 
     private static final String TYPE = "Withdrawal";
     private Entry entry;
-    private IPredicate<IAccount> predicate;
+    private IPredicate<Account> predicate;
 
     private boolean executed;
 

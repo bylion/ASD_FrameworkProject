@@ -4,7 +4,7 @@ import java.util.Date;
 
 public interface IEntry {
 
-    public IAccount getAccount();
+    public Account getAccount();
 
     public double getAmount();
 

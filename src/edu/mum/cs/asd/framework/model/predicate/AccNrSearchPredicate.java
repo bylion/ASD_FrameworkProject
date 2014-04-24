@@ -1,8 +1,8 @@
 package edu.mum.cs.asd.framework.model.predicate;
 
-import edu.mum.cs.asd.framework.model.IAccount;
+import edu.mum.cs.asd.framework.model.Account;
 
-public class AccNrSearchPredicate implements IPredicate<IAccount> {
+public class AccNrSearchPredicate implements IPredicate<Account> {
 
 	private String accNr;
 	
@@ -11,7 +11,7 @@ public class AccNrSearchPredicate implements IPredicate<IAccount> {
 	}
 	
     @Override
-    public boolean check(IAccount a) {
+    public boolean check(Account a) {
     	return a.getAccountNumber().equals(accNr);
     }
 }
