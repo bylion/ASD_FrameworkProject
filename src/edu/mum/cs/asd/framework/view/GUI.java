@@ -46,12 +46,16 @@ public abstract class GUI extends JFrame {
         super(title);
         this.controller = controller;
 //        properties = new FinancialProperties();
-        
-        initComponents(nature);
-        
         this.accountCol = accountCol;
         this.customerCol = customerCol;
         this.balanceCol = balanceCol;
+        
+        initComponents(nature);
+        
+        // FIX BUG: Move up the initialize code
+//        this.accountCol = accountCol;
+//        this.customerCol = customerCol;
+//        this.balanceCol = balanceCol;
     }
 
     private void initComponents(ApplicationNatureEnum nature) {
