@@ -4,6 +4,7 @@ import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.Factory;
+import edu.mum.cs.asd.framework.model.TransactionTypeEnum;
 import edu.mum.cs.asd.framework.model.command.CommandManager;
 import edu.mum.cs.asd.framework.model.command.ICommand;
 import edu.mum.cs.asd.framework.view.*;
@@ -32,20 +33,23 @@ public class TransactionHandler implements EventHandler {
             return;
         }
 
+        TransactionTypeEnum txType = TransactionTypeEnum.DEPOSIT;
         switch (type) {
             case ICommand.DEPOSIT:
                 txDialog = new TransactionDialog(gui, "Deposit", a.getVal("accountNumber"));
+                txType = TransactionTypeEnum.DEPOSIT;
                 break;
 
             case ICommand.WITHDRAW:
                 txDialog = new TransactionDialog(gui, "Withdraw", a.getVal("accountNumber"));
+                txType = TransactionTypeEnum.WITHDRAW;
                 break;
         }
 
         txDialog.setVisible(true);
 
         if (txDialog.getUserAction() == TransactionDialog.OK_ACTION) {
-            Entry entry = Factory.getInstance().createEntry(a, txDialog.getAmount());
+            Entry entry = Factory.getInstance().createEntry(a, txDialog.getAmount(), txType);
 
             ICommand transaction = Factory.getInstance().createTransaction(entry, type);
             CommandManager.getInstance().submit(transaction);

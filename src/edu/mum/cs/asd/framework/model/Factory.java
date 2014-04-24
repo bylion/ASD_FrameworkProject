@@ -56,8 +56,8 @@ public abstract class Factory implements IFactory {
     public abstract Account createAccount(Map<String, String> attributes, ICustomer customer);
 
     @Override
-    public Entry createEntry(IAccount account, double amount) {
-        return new Entry(account, amount);
+    public Entry createEntry(IAccount account, double amount, TransactionTypeEnum type) {
+        return new Entry(account, amount, type);
     }
 
     @Override

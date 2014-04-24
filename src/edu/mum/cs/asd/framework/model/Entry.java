@@ -19,12 +19,33 @@ public class Entry implements IEntry {
      *
      * @param account The account to which to add the amount.
      * @param amount The amount to add to the account.
+     * @param type The transaction type caused this entry (Deposit, Withdraw,
+     * Interest)
      */
-    public Entry(IAccount account, double amount) {
+    public Entry(IAccount account, double amount, TransactionTypeEnum type) {
         this.account = account;
         this.amount = amount;
         date = new Date();
         balanceBefore = account.getBalance();
+        String ccNumber = account.getVal("ccNumber");
+        switch (type) {
+            case DEPOSIT:
+            case INTEREST:
+                //ccNumber = null if it is not credit-card account
+                if (ccNumber == null) {
+                    balanceAfter = balanceBefore + amount;
+                } else {
+                    balanceAfter = balanceBefore - amount;
+                }
+                break;
+            case WITHDRAW:
+                if (ccNumber == null) {
+                    balanceAfter = balanceBefore - amount;
+                } else {
+                    balanceAfter = balanceBefore + amount;
+                }
+                break;
+        }
         balanceAfter = balanceBefore + amount;
     }
 
@@ -53,12 +74,14 @@ public class Entry implements IEntry {
         return balanceAfter;
     }
 
-	public final String getType() {
-		return type;
-	}
+    @Override
+    public String getType() {
+        return type;
+    }
 
-	public final void setType(String type) {
-		this.type = type;
-	}
+    @Override
+    public void setType(String type) {
+        this.type = type;
+    }
 
 }

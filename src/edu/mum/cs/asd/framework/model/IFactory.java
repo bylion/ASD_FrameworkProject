@@ -10,7 +10,7 @@ public interface IFactory {
 
     public Account createAccount(Map<String, String> attributes, ICustomer customer);
 
-    public Entry createEntry(IAccount account, double amount);
+    public Entry createEntry(IAccount account, double amount, TransactionTypeEnum type);
 
     public ICommand createTransaction(Entry entry, int type);
 }
