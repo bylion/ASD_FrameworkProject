@@ -1,8 +1,8 @@
 package edu.mum.cs.asd.framework.model.test;
 
 import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Entry;
-import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 /**
@@ -17,7 +17,8 @@ public class AlwaysInsufficientAccount extends Account {
     private double balance;
     private static final double INTEREST_RATE = 0.05;
 
-    public AlwaysInsufficientAccount() {
+    public AlwaysInsufficientAccount(Customer customer) {
+    	super(customer);
         balance = 0;
     }
 

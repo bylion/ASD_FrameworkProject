@@ -4,14 +4,12 @@ import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.predicate.AlwaysSufficientPredicate;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class CheckingAccount extends Account {
 
-    public CheckingAccount() {
-        super();
-        init();
-    }
+
 
     public CheckingAccount(Customer customer) {
         super(customer);

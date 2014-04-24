@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.TransactionTypeEnum;
 import edu.mum.cs.asd.framework.model.functor.EntryListFunctor;
@@ -14,7 +15,11 @@ import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public abstract class CreditCardAccount extends Account {
 
-    private String expireDate;
+    public CreditCardAccount(Customer customer) {
+		super(customer);
+	}
+
+	private String expireDate;
 
     public double getLastMonthBalance(List<Entry> entrys) {
         double lastBalance = 0;

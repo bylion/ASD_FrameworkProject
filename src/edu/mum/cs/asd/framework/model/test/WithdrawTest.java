@@ -18,7 +18,7 @@ public class WithdrawTest {
     @Test
     public void withdrawInsufficientTest() {
         Customer c = new Person(null, null, null, null, null, null, null);
-        Account acc = new AlwaysInsufficientAccount();
+        Account acc = new AlwaysInsufficientAccount(c);
         c.addAccount(acc);
         CommandManager mgr = new CommandManager();
         Entry entry = new Entry(acc, 50, TransactionTypeEnum.WITHDRAW);
@@ -30,7 +30,7 @@ public class WithdrawTest {
     @Test
     public void withdrawSufficientTest() {
         Customer c = new Person(null, null, null, null, null, null, null);
-        Account acc = new AlwaysSufficientAccount();
+        Account acc = new AlwaysSufficientAccount(c);
         c.addAccount(acc);
         CommandManager mgr = new CommandManager();
         Entry entry = new Entry(acc, 50, TransactionTypeEnum.WITHDRAW);

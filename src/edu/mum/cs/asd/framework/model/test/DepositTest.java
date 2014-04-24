@@ -18,7 +18,7 @@ public class DepositTest {
     @Test
     public void depositTest() {
         Customer c = new Person(null, null, null, null, null, null, null);
-        Account acc = new AlwaysInsufficientAccount();
+        Account acc = new AlwaysInsufficientAccount(c);
         c.addAccount(acc);
         CommandManager mgr = new CommandManager();
         Entry entry = new Entry(acc, 50, TransactionTypeEnum.DEPOSIT);

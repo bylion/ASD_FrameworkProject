@@ -15,9 +15,6 @@ public abstract class Account implements IAccount {
     protected Customer customer;
     protected List<Entry> entries;
 
-    public Account() {
-        init();
-    }
 
     private void init() {
         accountNumber = UUID.randomUUID().toString();

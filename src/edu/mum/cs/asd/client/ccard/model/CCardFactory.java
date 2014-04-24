@@ -12,11 +12,11 @@ public class CCardFactory extends Factory{
         createAccount(Map<String, String> attributes, Customer customer) {
         switch (attributes.get("type")) {
             case "gold":
-                return new Gold();
+                return new Gold(customer);
             case "silver":
-                return new Silver();
+                return new Silver(customer);
             case "bronze":
-                return new Bronze();
+                return new Bronze(customer);
         }
         
         System.out.println("System does not support this type of account.");

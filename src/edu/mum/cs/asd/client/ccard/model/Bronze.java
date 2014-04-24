@@ -1,11 +1,14 @@
 package edu.mum.cs.asd.client.ccard.model;
 
+import edu.mum.cs.asd.framework.model.Customer;
+
 
 public class Bronze extends CreditCardAccount {
 
     private double minPayment = 0.14;
 
-    public Bronze() {
+    public Bronze(Customer customer) {
+    	super(customer);
         interestRate = 0.06;
     }
 

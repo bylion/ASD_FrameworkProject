@@ -3,14 +3,11 @@ package edu.mum.cs.asd.client.bank.model;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Entry;
+import edu.mum.cs.asd.framework.model.predicate.AlwaysSufficientPredicate;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class SavingAccount extends Account {
 
-    public SavingAccount() {
-        super();
-        init();
-    }
 
     public SavingAccount(Customer customer) {
         super(customer);
