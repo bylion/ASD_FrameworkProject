@@ -11,7 +11,7 @@ public interface IAccount {
 
     public double getBalance();
 
-    public void notifyCustomer();
+    public void notifyCustomer(String message);
 
     public double getInterestValue();
 
@@ -19,9 +19,9 @@ public interface IAccount {
 
     public String getAcctType();
 
-    public void withdraw(double amount);
+    public void withdraw(Entry e);
 
-    public void deposit(double amount);
+    public void deposit(Entry e);
 
     public IPredicate<IAccount> getInsufficientPredicate();
     

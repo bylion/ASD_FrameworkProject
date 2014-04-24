@@ -61,7 +61,7 @@ public abstract class Factory implements IFactory {
     }
 
     @Override
-    public ICommand createTransaction(IEntry entry, int type) {
+    public ICommand createTransaction(Entry entry, int type) {
         switch (type) {
             case ICommand.DEPOSIT:
                 return new Deposit(entry);

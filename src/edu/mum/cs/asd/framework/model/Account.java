@@ -18,10 +18,6 @@ public abstract class Account implements IAccount {
     protected Customer customer;
     protected List<IEntry> entries;
 
-    public InsufficientPredicate Unnamed6;
-    public CurrentMonthPredicate Unnamed7;
-    public EntryListFunctor Unnamed8;
-
     public Account() {
         init();
     }
@@ -47,8 +43,10 @@ public abstract class Account implements IAccount {
     }
 
     @Override
-    public void notifyCustomer() {
-        customer.sendEmail(createNotification());
+    public void notifyCustomer(String message) {
+        if (message != null) {
+            customer.sendEmail(message);
+        }
     }
 
     @Override
@@ -76,20 +74,24 @@ public abstract class Account implements IAccount {
         return balance;
     }
 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public abstract String getAcctType();
 
     public abstract double getInterestRate();
 
-    public abstract String createNotification();
+    public abstract String createNotification(Entry e);
 
     public abstract void generateMonthlyReport();
 
     @Override
-    public abstract void withdraw(double amount);
+    public abstract void withdraw(Entry e);
 
     @Override
-    public abstract void deposit(double amount);
+    public abstract void deposit(Entry e);
 
     @Override
     public abstract IPredicate<IAccount> getInsufficientPredicate();

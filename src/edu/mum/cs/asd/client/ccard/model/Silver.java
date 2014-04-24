@@ -1,5 +1,6 @@
 package edu.mum.cs.asd.client.ccard.model;
 
+import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.IAccount;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
@@ -32,7 +33,12 @@ public class Silver extends CreditCardAccount {
     }
 
     @Override
-    public String createNotification() {
+    public IPredicate<IAccount> getInsufficientPredicate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String createNotification(Entry e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -42,17 +48,12 @@ public class Silver extends CreditCardAccount {
     }
 
     @Override
-    public void withdraw(double amount) {
+    public void withdraw(Entry e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deposit(double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public IPredicate<IAccount> getInsufficientPredicate() {
+    public void deposit(Entry e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
