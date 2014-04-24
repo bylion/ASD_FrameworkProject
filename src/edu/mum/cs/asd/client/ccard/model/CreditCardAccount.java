@@ -113,12 +113,12 @@ public abstract class CreditCardAccount extends Account {
         double totalcharges = this.getTotalMonthlyCharges(functor.getValue());
         return previousbalance - totalcredits + totalcharges + interestRate * (previousbalance - totalcredits);
     }
-
+    
     @Override
     public void withdraw(Entry e) {
         balance -= e.getAmount();
         if (balance < 0 || e.getAmount() > 400) {
-            notifyCustomer(createNotification(e));
+        	notifyCustomer(createNotification(e));
         }
     }
 
@@ -126,7 +126,7 @@ public abstract class CreditCardAccount extends Account {
     public void deposit(Entry e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public IPredicate<Account> getInsufficientPredicate() {
         return new AlwaysSufficientPredicate();
