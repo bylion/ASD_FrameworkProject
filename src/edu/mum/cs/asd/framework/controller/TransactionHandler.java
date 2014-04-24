@@ -32,7 +32,6 @@ public class TransactionHandler implements EventHandler {
         if (a == null || c == null) {
             return;
         }
-
         TransactionTypeEnum txType = TransactionTypeEnum.DEPOSIT;
         switch (type) {
             case ICommand.DEPOSIT:
@@ -45,7 +44,6 @@ public class TransactionHandler implements EventHandler {
                 txType = TransactionTypeEnum.WITHDRAW;
                 break;
         }
-
         txDialog.setVisible(true);
 
         if (txDialog.getUserAction() == TransactionDialog.OK_ACTION) {

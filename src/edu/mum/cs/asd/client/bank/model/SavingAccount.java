@@ -3,15 +3,11 @@ package edu.mum.cs.asd.client.bank.model;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Entry;
-import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.predicate.AlwaysSufficientPredicate;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class SavingAccount extends Account {
 
-    public SavingAccount() {
-        super();
-        init();
-    }
 
     public SavingAccount(Customer customer) {
         super(customer);
@@ -34,7 +30,11 @@ public class SavingAccount extends Account {
 
     @Override
     public String createNotification(Entry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if (balance < 0) {
+    		return "Balance below 0: " + balance;
+    	} else {
+    		return "Big transaction: " + e.getAmount();
+    	}
     }
 
     @Override
@@ -44,7 +44,10 @@ public class SavingAccount extends Account {
 
     @Override
     public void withdraw(Entry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        balance -= e.getAmount();
+        if (balance < 0 || e.getAmount() > 500) {
+        	notifyCustomer(createNotification(e));
+        }
     }
 
     @Override
@@ -54,6 +57,6 @@ public class SavingAccount extends Account {
 
     @Override
     public IPredicate<Account> getInsufficientPredicate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new AlwaysSufficientPredicate();
     }
 }
