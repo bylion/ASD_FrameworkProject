@@ -1,14 +1,16 @@
 package edu.mum.cs.asd.client.ccard.model;
 
+import java.util.Date;
+import java.util.List;
+
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.TransactionTypeEnum;
 import edu.mum.cs.asd.framework.model.functor.EntryListFunctor;
 import edu.mum.cs.asd.framework.model.functor.IFunctor;
+import edu.mum.cs.asd.framework.model.predicate.AlwaysSufficientPredicate;
 import edu.mum.cs.asd.framework.model.predicate.CurrentMonthPredicate;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
-import java.util.Date;
-import java.util.List;
 
 public abstract class CreditCardAccount extends Account {
 
@@ -105,6 +107,24 @@ public abstract class CreditCardAccount extends Account {
         double totalcredits = this.getTotalMonthlyCredits(functor.getValue());
         double totalcharges = this.getTotalMonthlyCharges(functor.getValue());
         return previousbalance - totalcredits + totalcharges + interestRate * (previousbalance - totalcredits);
+    }
+    
+    @Override
+    public void withdraw(Entry e) {
+        balance -= e.getAmount();
+        if (balance < 0 || e.getAmount() > 400) {
+        	notifyCustomer(createNotification(e));
+        }
+    }
+
+    @Override
+    public void deposit(Entry e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public IPredicate<Account> getInsufficientPredicate() {
+        return new AlwaysSufficientPredicate();
     }
 
     public abstract double getMonthlyAmountDue();
