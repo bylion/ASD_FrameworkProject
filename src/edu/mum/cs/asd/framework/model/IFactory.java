@@ -8,7 +8,7 @@ public interface IFactory {
 
     public Customer createCustomer(Map<String, String> attributes);
 
-    public Account createAccount(Map<String, String> attributes, ICustomer customer);
+    public Account createAccount(Map<String, String> attributes, Customer customer);
 
     public Entry createEntry(IAccount account, double amount, TransactionTypeEnum type);
 

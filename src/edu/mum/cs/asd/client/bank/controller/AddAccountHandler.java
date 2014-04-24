@@ -43,6 +43,7 @@ public class AddAccountHandler implements EventHandler {
                 fCompany.addCustomer(c);
             }
             Account account = Factory.getInstance().createAccount(fields, c);
+            
             c.addAccount(account);
             gui.updateData(c, account);
         }

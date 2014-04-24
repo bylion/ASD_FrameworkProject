@@ -53,7 +53,7 @@ public abstract class Factory implements IFactory {
     }
 
     @Override
-    public abstract Account createAccount(Map<String, String> attributes, ICustomer customer);
+    public abstract Account createAccount(Map<String, String> attributes, Customer customer);
 
     @Override
     public Entry createEntry(IAccount account, double amount, TransactionTypeEnum type) {
