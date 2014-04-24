@@ -12,5 +12,7 @@ public class AddInterestHandler implements EventHandler {
         //Create add Interest functor
         IFunctor functor = new AddInterestFunctor();
         fCompany.doAll(functor);
+        
+        gui.updateModel();
     }
 }
