@@ -44,7 +44,7 @@ public abstract class Factory implements IFactory {
         if (attributes.get("numOfEmployees") != null) {
             return new Company(name, street, city, state, zipcode, email, Integer.parseInt(attributes.get("numOfEmployees")));
         } else {
-            return new Person(name, street, city, state, zipcode, email, attributes.get("birthDate"));
+            return new Person(name, street, city, state, zipcode, email, attributes.get("birthdate"));
         }
 //        System.out.println("Creating a null customer because of wrong input formatting.");
 //        return null;

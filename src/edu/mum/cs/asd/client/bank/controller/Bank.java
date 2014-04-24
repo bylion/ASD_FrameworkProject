@@ -14,6 +14,9 @@ public class Bank extends FinancialCompany{
     public Bank() {
         gui = new BankGUI(this);
         gui.setVisible(true);
+        
+        loadDbData();
+        
         Factory.setFactory(new BankFactory());
     }
     
