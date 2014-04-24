@@ -53,7 +53,9 @@ public class SavingAccount extends Account {
     @Override
     public void deposit(Entry e) {
         balance += e.getAmount();
-        notifyCustomer(createNotification(e));
+        if (e.getAmount() > 500) {
+        	notifyCustomer(createNotification(e));
+        }
     }
 
     @Override

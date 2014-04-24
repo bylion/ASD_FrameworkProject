@@ -43,6 +43,8 @@ public abstract class Customer implements ICustomer {
     @Override
     public void sendEmail(String s) {
         System.out.println("Sending email to: " + name);
+        System.out.println("Email contents:");
+        System.out.println(s);
     }
 
     /* Getters */

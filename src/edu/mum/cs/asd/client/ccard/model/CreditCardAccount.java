@@ -116,7 +116,7 @@ public abstract class CreditCardAccount extends Account {
 
     @Override
     public void withdraw(Entry e) {
-        balance -= e.getAmount();
+        balance += e.getAmount();
         if (balance < 0 || e.getAmount() > 400) {
             notifyCustomer(createNotification(e));
         }
@@ -124,8 +124,10 @@ public abstract class CreditCardAccount extends Account {
 
     @Override
     public void deposit(Entry e) {
-        balance += e.getAmount();
-        notifyCustomer(createNotification(e));
+        balance -= e.getAmount();
+        if (e.getAmount() > 500) {
+        	notifyCustomer(createNotification(e));
+        }
     }
 
     @Override
