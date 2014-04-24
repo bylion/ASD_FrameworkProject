@@ -2,7 +2,6 @@ package edu.mum.cs.asd.client.ccard.model;
 
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Entry;
-import edu.mum.cs.asd.framework.model.IEntry;
 import edu.mum.cs.asd.framework.model.TransactionTypeEnum;
 import edu.mum.cs.asd.framework.model.functor.EntryListFunctor;
 import edu.mum.cs.asd.framework.model.functor.IFunctor;
@@ -14,10 +13,20 @@ import java.util.List;
 public abstract class CreditCardAccount extends Account {
 
     private String expireDate;
-    private double lastMonthBalance;
 
-    public double getLastMonthBalance() {
-        return 0.0;
+    public double getLastMonthBalance(List<Entry> entrys) {
+        double lastBalance = 0;
+        for (Entry entry : entrys) {
+            switch (entry.getType()) {
+                case DEPOSIT:
+                case INTEREST:
+                    lastBalance -= entry.getAmount();
+                case WITHDRAW:
+                    lastBalance += entry.getAmount();
+                    break;
+            }
+        }
+        return lastBalance;
     }
 
     public double getTotalMonthlyCredits(List<Entry> entrys) {
@@ -62,7 +71,7 @@ public abstract class CreditCardAccount extends Account {
         StringBuilder sb = new StringBuilder();
         sb.append("Customer: ").append(customer.getVal("name")).append('\n');
         sb.append("Account Type: ").append(getAcctType()).append('\n');
-        sb.append("Previous Balance: ").append(this.getLastMonthBalance()).append("\n");
+        sb.append("Previous Balance: ").append(this.getLastMonthBalance(functor.getValue())).append("\n");
         sb.append("Total Charges: ").append(this.getTotalMonthlyCharges(functor.getValue())).append("\n");
         sb.append("Total Credits: ").append(this.getTotalMonthlyCredits(functor.getValue())).append("\n");
         sb.append("New Balance: ").append(this.getNewMonthlyBalance()).append("\n");
@@ -74,18 +83,29 @@ public abstract class CreditCardAccount extends Account {
     public String createNotification(Entry e) {
         switch (customer.getType()) {
             case "P":
-                if (Math.abs(e.getAmount()) > 400) {
+                if (e.getAmount() > 400) {
                     return "transaction amount greater than 400";
                 } else if (getBalance() < 0) {
                     return "Your balance less than 0.";
-                }   break;
+                }
+                break;
             case "C":
                 return "Transaction is done.";
         }
         return null;
     }
 
-    public abstract double getNewMonthlyBalance();
+    public double getNewMonthlyBalance() {
+        IPredicate<Entry> predicate = new CurrentMonthPredicate(new Date().getMonth());
+        IFunctor<Entry, List<Entry>> functor = new EntryListFunctor();
+        // where is the Deposit and withdrawal difference
+        searchEntries(predicate, functor);
+
+        double previousbalance = this.getLastMonthBalance(functor.getValue());
+        double totalcredits = this.getTotalMonthlyCredits(functor.getValue());
+        double totalcharges = this.getTotalMonthlyCharges(functor.getValue());
+        return previousbalance - totalcredits + totalcharges + interestRate * (previousbalance - totalcredits);
+    }
 
     public abstract double getMonthlyAmountDue();
 }

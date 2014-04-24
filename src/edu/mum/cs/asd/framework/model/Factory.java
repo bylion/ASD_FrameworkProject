@@ -69,10 +69,6 @@ public abstract class Factory implements IFactory {
                 return new Deposit(entry);
             case ICommand.WITHDRAW:
                 return new Withdraw(entry);
-            case ICommand.SERIALIZE:
-                return new Serialize();
-            case ICommand.DESERIALIZE:
-                return new Deserialize();
             default:
                 return null;
         }

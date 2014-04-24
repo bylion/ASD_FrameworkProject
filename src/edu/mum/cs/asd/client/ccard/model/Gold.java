@@ -3,6 +3,7 @@ package edu.mum.cs.asd.client.ccard.model;
 import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
+import edu.mum.cs.asd.framework.model.predicate.InsufficientPredicate;
 
 public class Gold extends CreditCardAccount {
 
@@ -13,13 +14,8 @@ public class Gold extends CreditCardAccount {
     }
 
     @Override
-    public double getNewMonthlyBalance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public double getMonthlyAmountDue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return minPayment * this.getNewMonthlyBalance();
     }
 
     @Override
@@ -34,17 +30,7 @@ public class Gold extends CreditCardAccount {
 
     @Override
     public IPredicate<Account> getInsufficientPredicate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String createNotification(Entry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String generateMonthlyReport() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new InsufficientPredicate();
     }
 
     @Override
@@ -56,4 +42,5 @@ public class Gold extends CreditCardAccount {
     public void deposit(Entry e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
