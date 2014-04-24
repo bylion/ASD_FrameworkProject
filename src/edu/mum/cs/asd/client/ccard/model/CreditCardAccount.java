@@ -15,11 +15,11 @@ import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public abstract class CreditCardAccount extends Account {
 
-    protected String expireDate;
-
     public CreditCardAccount(Customer customer) {
-        super(customer);
-    }
+		super(customer);
+	}
+
+	private String expireDate;
 
     public double getLastMonthBalance(List<Entry> entrys) {
         double lastBalance = 0;

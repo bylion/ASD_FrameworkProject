@@ -7,10 +7,8 @@ public class Bronze extends CreditCardAccount {
 
     private double minPayment = 0.14;
 
-    public Bronze(String ccNumber, String expDate, Customer customer) {
-        super(customer);
-        this.accountNumber = ccNumber;
-        this.expireDate = expDate;
+    public Bronze(Customer customer) {
+    	super(customer);
         interestRate = 0.06;
     }
 
