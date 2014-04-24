@@ -55,7 +55,9 @@ public abstract class Factory implements IFactory {
 
     @Override
     public Entry createEntry(Account account, double amount, TransactionTypeEnum type) {
-        return new Entry(account, amount, type);
+    	Entry e = new Entry(account, amount, type);
+    	account.addEntry(e);
+        return e;
     }
 
     @Override

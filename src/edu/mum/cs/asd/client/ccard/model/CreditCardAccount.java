@@ -23,15 +23,10 @@ public abstract class CreditCardAccount extends Account {
 
     public double getLastMonthBalance(List<Entry> entrys) {
         double lastBalance = 0;
-        for (Entry entry : entrys) {
-            switch (entry.getType()) {
-                case DEPOSIT:
-                case INTEREST:
-                    lastBalance -= entry.getAmount();
-                case WITHDRAW:
-                    lastBalance += entry.getAmount();
-                    break;
-            }
+        if(!entrys.isEmpty()){
+        	lastBalance = entrys.get(0).getBalanceBefore();
+        }else if(entries.size() != 0){
+        	lastBalance = balance;
         }
         return lastBalance;
     }
@@ -82,7 +77,7 @@ public abstract class CreditCardAccount extends Account {
         sb.append("Total Charges: ").append(this.getTotalMonthlyCharges(functor.getValue())).append("\n");
         sb.append("Total Credits: ").append(this.getTotalMonthlyCredits(functor.getValue())).append("\n");
         sb.append("New Balance: ").append(this.getNewMonthlyBalance()).append("\n");
-        sb.append("Total Due: ").append(this.getMonthlyAmountDue()).append("\n");
+        sb.append("Total Due: ").append(Math.max(this.getMonthlyAmountDue(), 0)).append("\n");
         return sb.toString();
     }
 

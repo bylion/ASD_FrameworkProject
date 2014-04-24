@@ -1,7 +1,9 @@
 package edu.mum.cs.asd.framework.controller;
 
+import edu.mum.cs.asd.framework.model.Account;
 import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.view.GUI;
+
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.table.DefaultTableModel;
 
 public class LoadDBHandler implements EventHandler {
@@ -24,15 +27,20 @@ public class LoadDBHandler implements EventHandler {
             if (file.exists()) {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
                 customers = (List<Customer>) objectInputStream.readObject();
-                tableModel = (DefaultTableModel) objectInputStream.readObject();
+//                tableModel = (DefaultTableModel) objectInputStream.readObject();
 
                 if (customers != null) {
                     fCompany.getCustomers().addAll(customers);
+                    for (Customer cust : fCompany.getCustomers()) {
+        				for (Account acct : cust.getAccounts()) {
+        					gui.updateData(cust, acct);
+        				}
+        			}
                 }
 
-                if (tableModel != null) {
-                    gui.setModel(tableModel);
-                }
+//                if (tableModel != null) {
+//                    gui.setModel(tableModel);
+//                }
             }
 
         } catch (FileNotFoundException ex) {
@@ -40,7 +48,7 @@ public class LoadDBHandler implements EventHandler {
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LoadDBHandler.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (customers == null || tableModel == null) {
+            if (customers == null) {
                 file.delete();
             }
         }

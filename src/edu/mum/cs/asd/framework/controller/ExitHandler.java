@@ -1,6 +1,9 @@
 package edu.mum.cs.asd.framework.controller;
 
+import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.view.GUI;
+
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,7 +25,7 @@ public class ExitHandler implements EventHandler {
             
             objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
             objectOutputStream.writeObject(fCompany.getCustomers());
-            objectOutputStream.writeObject(gui.getModel());
+            //objectOutputStream.writeObject(gui.getModel());
             
         } catch (IOException ex) {
             Logger.getLogger(ExitHandler.class.getName()).log(Level.SEVERE, null, ex);

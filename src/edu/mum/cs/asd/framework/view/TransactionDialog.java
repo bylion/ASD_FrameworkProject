@@ -39,7 +39,8 @@ public class TransactionDialog extends JDialog {
     }
 
     private void initComponents() {
-        acctNumberLabel = new JLabel("Acct Nr");
+    	String acctNametitle = "";
+        acctNumberLabel = new JLabel("Acct");
         amountLabel = new JLabel("Amount");
 
         acctNumberField = new JLabel(accountNumber);

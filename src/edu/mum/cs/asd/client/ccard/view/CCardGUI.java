@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class CCardGUI extends GUI {
     public ActionButton addCardAccountBtn;
     public ActionButton generateMonthlyBillsBtn;
+    private ApplicationNatureEnum nature;
 
     public CCardGUI(FinancialCompany controller) {
         super(controller, "Credit-Card Processing Application", ApplicationNatureEnum.CREDIT, 3, 0, 4);
