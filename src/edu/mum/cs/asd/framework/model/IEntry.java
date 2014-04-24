@@ -14,7 +14,7 @@ public interface IEntry {
 
     public double getBalanceAfter();
     
-    public void setType(String type);
+    public void setType(TransactionTypeEnum type);
     
-    public String getType();
+    public TransactionTypeEnum getType();
 }

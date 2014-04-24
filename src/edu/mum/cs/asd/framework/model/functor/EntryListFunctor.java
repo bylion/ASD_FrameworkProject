@@ -1,20 +1,20 @@
 package edu.mum.cs.asd.framework.model.functor;
 
-import edu.mum.cs.asd.framework.model.IEntry;
+import edu.mum.cs.asd.framework.model.Entry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntryListFunctor implements IFunctor<IEntry, List<IEntry>> {
+public class EntryListFunctor implements IFunctor<Entry, List<Entry>> {
 
-    private List<IEntry> entries = new ArrayList<>();
+    private List<Entry> entries = new ArrayList<>();
 
     @Override
-    public void compute(IEntry e) {
+    public void compute(Entry e) {
         entries.add(e);
     }
 
     @Override
-    public List<IEntry> getValue() {
+    public List<Entry> getValue() {
         return entries;
     }
 }

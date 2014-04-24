@@ -13,7 +13,7 @@ public abstract class Account implements IAccount {
     protected double balance;
     protected double interestRate;
     protected Customer customer;
-    protected List<IEntry> entries;
+    protected List<Entry> entries;
 
     public Account() {
         init();
@@ -31,7 +31,7 @@ public abstract class Account implements IAccount {
     }
 
     @Override
-    public void addEntry(IEntry entry) {
+    public void addEntry(Entry entry) {
         entries.add(entry);
     }
 
@@ -52,8 +52,8 @@ public abstract class Account implements IAccount {
     }
 
     @Override
-    public <R> R searchEntries(IPredicate<IEntry> predicate, IFunctor<IEntry, R> functor) {
-        for (IEntry e : entries) {
+    public <R> R searchEntries(IPredicate<Entry> predicate, IFunctor<Entry, R> functor) {
+        for (Entry e : entries) {
             if (predicate.check(e)) {
                 functor.compute(e);
             }

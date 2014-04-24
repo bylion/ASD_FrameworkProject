@@ -2,11 +2,12 @@ package edu.mum.cs.asd.framework.model.command;
 
 import edu.mum.cs.asd.framework.model.Entry;
 import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.TransactionTypeEnum;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
 
 public class Withdraw implements ICommand {
 
-    private static final String TYPE = "Withdrawal";
+    private static final TransactionTypeEnum TYPE = TransactionTypeEnum.WITHDRAW;
     private Entry entry;
     private IPredicate<Account> predicate;
 
