@@ -22,25 +22,20 @@ public class LoadDBHandler implements EventHandler {
     public void handle(GUI gui, FinancialCompany fCompany, ActionEvent event) {
         File file = new File("financialData");
         List<Customer> customers = null;
-        DefaultTableModel tableModel = null;
         try {
             if (file.exists()) {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
                 customers = (List<Customer>) objectInputStream.readObject();
-//                tableModel = (DefaultTableModel) objectInputStream.readObject();
 
                 if (customers != null) {
                     fCompany.getCustomers().addAll(customers);
                     for (Customer cust : fCompany.getCustomers()) {
-        				for (Account acct : cust.getAccounts()) {
-        					gui.updateData(cust, acct);
-        				}
-        			}
+                        for (Account acct : cust.getAccounts()) {
+                            gui.updateData(cust, acct);
+                        }
+                    }
                 }
 
-//                if (tableModel != null) {
-//                    gui.setModel(tableModel);
-//                }
             }
 
         } catch (FileNotFoundException ex) {

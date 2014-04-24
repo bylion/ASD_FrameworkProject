@@ -35,6 +35,7 @@ public class AddAccountHandler implements EventHandler {
         accountDialog.setVisible(true);
         if (accountDialog.getUserAction() == AccountDialog.OK_ACTION) {
             Map<String, String> fields = accountDialog.getAccountFields();
+            System.out.println("fields = "+fields);
             Customer c;
             if (fCompany.isCustomerExist(fields.get("name"))) {
                 c = fCompany.getCustomer(fields.get("name"));
