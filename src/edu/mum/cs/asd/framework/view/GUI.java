@@ -118,7 +118,7 @@ public abstract class GUI extends JFrame {
         return (DefaultTableModel) datatable.getModel();
     }
     
-    public void getModel(DefaultTableModel model) {
+    public void setModel(DefaultTableModel model) {
         datatable.setModel(model);
     }
 

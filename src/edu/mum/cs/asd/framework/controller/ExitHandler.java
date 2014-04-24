@@ -19,19 +19,23 @@ public class ExitHandler implements EventHandler {
             if (file.exists()) {
                 file.mkdirs();
             }
+            
             objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
             objectOutputStream.writeObject(fCompany.getCustomers());
             objectOutputStream.writeObject(gui.getModel());
+            
         } catch (IOException ex) {
             Logger.getLogger(ExitHandler.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                objectOutputStream.close();
+                if (objectOutputStream != null) {
+                    objectOutputStream.close();
+                }
             } catch (IOException ex) {
                 Logger.getLogger(ExitHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         System.exit(0);
     }
 }

@@ -31,6 +31,9 @@ public class Card extends FinancialCompany {
     public Card() {
         gui = new CCardGUI(this);
         gui.setVisible(true);
+        
+        loadDbData();
+        
         Factory.setFactory(new CCardFactory());
     }
     

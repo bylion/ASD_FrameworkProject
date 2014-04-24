@@ -9,15 +9,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 public class FinancialCompany implements ActionListener {
 
     protected List<Customer> customers;
     protected FinancialProperties fProperties;
     protected GUI gui;
-
+    
+    //load data files
+    private static EventHandler dbHandler;
+    
     public FinancialCompany() {
         customers = new LinkedList<>();
+        
     }
 
     public FinancialCompany(GUI gui) {
@@ -25,24 +30,31 @@ public class FinancialCompany implements ActionListener {
         initGui(gui);
     }
     
-    private void initGui(GUI gui){
+    protected void loadDbData(){
+        if(dbHandler == null){
+            dbHandler = new LoadDBHandler();
+            dbHandler.handle(gui, this, null);
+        }
+    }
+
+    private void initGui(GUI gui) {
         this.gui = gui;
         this.gui.setVisible(true);
     }
-    
+
     public void setGui(GUI gui) {
         initGui(gui);
     }
-    
-    
+
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
 
     public boolean isCustomerExist(String name) {
         for (ICustomer customer : customers) {
-            if (customer.toString().equals(name)) 
+            if (customer.toString().equals(name)) {
                 return true;
+            }
         }
         return false;
     }
@@ -56,16 +68,17 @@ public class FinancialCompany implements ActionListener {
     }
 
     public void doAll(IFunctor functor) {
-        for(ICustomer customer : customers) {
+        for (ICustomer customer : customers) {
             functor.compute(customer);
         }
     }
 
     public IAccount searchBy(IPredicate predicate) {
-        for(ICustomer customer : customers) {
+        for (ICustomer customer : customers) {
             for (IAccount account : customer.getAccounts()) {
-                if (predicate.check(account))
+                if (predicate.check(account)) {
                     return account;
+                }
             }
         }
         return null;
@@ -80,11 +93,12 @@ public class FinancialCompany implements ActionListener {
     public List<Customer> getCustomers() {
         return customers;
     }
-    
-    public Customer getCustomer(String name){
+
+    public Customer getCustomer(String name) {
         for (Customer customer : customers) {
-            if(customer.toString().equals(name))
+            if (customer.toString().equals(name)) {
                 return customer;
+            }
         }
         return null;
     }
