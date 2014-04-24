@@ -11,7 +11,7 @@ public abstract class Customer implements ICustomer {
     private String state;
     private String zipcode;
     private String email;
-    private List<IAccount> accounts;
+    private List<Account> accounts;
 
     public Customer(String name, String street, String city, String state,
             String zipcode, String email) {
@@ -26,17 +26,17 @@ public abstract class Customer implements ICustomer {
     }
 
     @Override
-    public void addAccount(IAccount account) {
+    public void addAccount(Account account) {
         accounts.add(account);
     }
 
     @Override
-    public void removeAccount(IAccount account) {
+    public void removeAccount(Account account) {
         accounts.remove(account);
     }
 
     @Override
-    public List<IAccount> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 

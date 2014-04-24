@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface ICustomer {
 
-    public void addAccount(IAccount account);
+    public void addAccount(Account account);
 
-    public void removeAccount(IAccount account);
+    public void removeAccount(Account account);
 
-    public List<IAccount> getAccounts();
+    public List<Account> getAccounts();
 
     public void sendEmail(String email);
     

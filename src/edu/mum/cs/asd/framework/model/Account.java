@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import edu.mum.cs.asd.framework.model.functor.EntryListFunctor;
 import edu.mum.cs.asd.framework.model.functor.IFunctor;
-import edu.mum.cs.asd.framework.model.predicate.CurrentMonthPredicate;
 import edu.mum.cs.asd.framework.model.predicate.IPredicate;
-import edu.mum.cs.asd.framework.model.predicate.InsufficientPredicate;
 
 public abstract class Account implements IAccount {
 
@@ -85,7 +82,7 @@ public abstract class Account implements IAccount {
 
     public abstract String createNotification(Entry e);
 
-    public abstract void generateMonthlyReport();
+    public abstract String generateMonthlyReport();
 
     @Override
     public abstract void withdraw(Entry e);

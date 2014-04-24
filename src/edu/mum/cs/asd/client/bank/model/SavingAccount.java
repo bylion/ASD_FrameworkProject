@@ -38,7 +38,7 @@ public class SavingAccount extends Account {
     }
 
     @Override
-    public void generateMonthlyReport() {
+    public String generateMonthlyReport() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
