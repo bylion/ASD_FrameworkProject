@@ -7,8 +7,10 @@ public class Gold extends CreditCardAccount {
 
     public double minPayment = 0.1;
 
-    public Gold(Customer customer) {
-    	super(customer);
+    public Gold(String ccNumber, String expDate, Customer customer) {
+        super(customer);
+        this.accountNumber = ccNumber;
+        this.expireDate = expDate;
         interestRate = 0.05;
     }
 

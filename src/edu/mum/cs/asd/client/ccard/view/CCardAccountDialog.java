@@ -79,6 +79,7 @@ public class CCardAccountDialog extends AccountDialog {
     public Map<String, String> getAccountFields() {
         Map<String, String> map = super.getAccountFields();
         map.put("ccNumber", ccNumberField.getText());
+        map.put("expireDate", expiredDateField.getText());
         map.put("type", goldBtn.isSelected() ? "gold" : (silverBtn.isSelected() ? "silver" : "bronze"));
         return map;
     }
