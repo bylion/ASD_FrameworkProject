@@ -34,7 +34,11 @@ public class CheckingAccount extends Account {
 
     @Override
     public String createNotification(Entry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	if (balance < 0) {
+    		return "Balance below 0: " + balance;
+    	} else {
+    		return "Big transaction: " + e.getAmount();
+    	}
     }
 
     @Override
@@ -44,7 +48,10 @@ public class CheckingAccount extends Account {
 
     @Override
     public void withdraw(Entry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	balance -= e.getAmount();
+        if (balance < 0 || e.getAmount() > 500) {
+        	notifyCustomer(createNotification(e));
+        }
     }
 
     @Override
@@ -54,6 +61,6 @@ public class CheckingAccount extends Account {
 
     @Override
     public IPredicate<Account> getInsufficientPredicate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	return new AlwaysSufficientPredicate();
     }
 }
