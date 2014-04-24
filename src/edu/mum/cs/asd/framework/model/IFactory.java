@@ -12,5 +12,5 @@ public interface IFactory {
 
     public Entry createEntry(IAccount account, double amount);
 
-    public ICommand createTransaction(IEntry entry);
+    public ICommand createTransaction(IEntry entry, int type);
 }

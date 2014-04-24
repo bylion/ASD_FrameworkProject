@@ -7,6 +7,7 @@ public class ExitHandler implements EventHandler {
 
     @Override
     public void handle(GUI gui, FinancialCompany fCompany, ActionEvent event) {
-        //TODO: 
+        //TODO: Call Serialize action
+        System.exit(0);
     }
 }

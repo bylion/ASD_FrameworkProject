@@ -7,6 +7,15 @@ public class CommandManager {
     private Stack<ICommand> commandsExecuted;
     private Stack<ICommand> commandsUndone;
     
+    private static CommandManager manager;
+    
+    public static CommandManager getInstance(){
+        if(manager == null){
+            manager = new CommandManager();
+        }
+        return manager;
+    }
+    
     public CommandManager() {
     	commandsExecuted = new Stack<>();
     	commandsUndone = new Stack<>();

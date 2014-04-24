@@ -1,6 +1,7 @@
 package edu.mum.cs.asd.client.bank.view;
 
 import edu.mum.cs.asd.framework.view.AccountDialog;
+import java.util.Map;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -57,5 +58,13 @@ public class PersonalAccountDialog extends AccountDialog {
         jPanel.add(savingBtn);
         
         return jPanel;
+    }
+    
+    @Override
+    public Map<String, String> getAccountFields() {
+        Map<String, String> map = super.getAccountFields();
+        map.put("birthdate", birthdateField.getText());
+        map.put("type", savingBtn.isSelected() ? "saving" : "checking");
+        return map;
     }
 }

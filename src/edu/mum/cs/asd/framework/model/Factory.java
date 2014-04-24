@@ -3,7 +3,9 @@ package edu.mum.cs.asd.framework.model;
 import java.util.Map;
 
 import edu.mum.cs.asd.framework.model.command.Deposit;
+import edu.mum.cs.asd.framework.model.command.Deserialize;
 import edu.mum.cs.asd.framework.model.command.ICommand;
+import edu.mum.cs.asd.framework.model.command.Serialize;
 import edu.mum.cs.asd.framework.model.command.Withdraw;
 
 public abstract class Factory implements IFactory {
@@ -59,11 +61,18 @@ public abstract class Factory implements IFactory {
     }
 
     @Override
-    public ICommand createTransaction(IEntry entry) {
-        if (entry.getAmount() >= 0) {
-            return new Deposit(entry);
-        } else {
-            return new Withdraw(entry);
+    public ICommand createTransaction(IEntry entry, int type) {
+        switch (type) {
+            case ICommand.DEPOSIT:
+                return new Deposit(entry);
+            case ICommand.WITHDRAW:
+                return new Withdraw(entry);
+            case ICommand.SERIALIZE:
+                return new Serialize();
+            case ICommand.DESERIALIZE:
+                return new Deserialize();
+            default:
+                return null;
         }
     }
 

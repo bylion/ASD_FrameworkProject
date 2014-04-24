@@ -9,16 +9,14 @@ import edu.mum.cs.asd.framework.model.Customer;
 import edu.mum.cs.asd.framework.model.Factory;
 import edu.mum.cs.asd.framework.model.FinancialProperties;
 import edu.mum.cs.asd.framework.model.PropertiesEnum;
+import edu.mum.cs.asd.framework.model.command.ICommand;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -39,13 +37,21 @@ public abstract class GUI extends JFrame {
     protected Factory factory;
     protected FinancialCompany controller;
     protected FinancialProperties properties;
+    
+    private int accountCol;
+    private int customerCol;
+    private int balanceCol;
 
-    public GUI(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
+    public GUI(FinancialCompany controller, String title, ApplicationNatureEnum nature, int accountCol, int customerCol, int balanceCol) {
         super(title);
         this.controller = controller;
 //        properties = new FinancialProperties();
         
         initComponents(nature);
+        
+        this.accountCol = accountCol;
+        this.customerCol = customerCol;
+        this.balanceCol = balanceCol;
     }
 
     private void initComponents(ApplicationNatureEnum nature) {
@@ -61,16 +67,17 @@ public abstract class GUI extends JFrame {
         datatable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scroller.setViewportView(datatable);
 
-        depositBtn = new ActionButton("Deposit", new TransactionHandler());
-        depositBtn.addActionListener(controller);
 //        String appNature = properties.getProperty(PropertiesEnum.APP_NATURE.getVal());
+        depositBtn = new ActionButton("Deposit", new TransactionHandler(ICommand.DEPOSIT, accountCol, customerCol, balanceCol));
         if (nature.equals(ApplicationNatureEnum.DEBIT)) {
-            withdrawBtn = new ActionButton(PropertiesEnum.WITHDRAW.getVal(), new TransactionHandler());
+            withdrawBtn = new ActionButton(PropertiesEnum.WITHDRAW.getVal(), new TransactionHandler(ICommand.WITHDRAW, accountCol, customerCol, balanceCol));
         }else{
-            withdrawBtn = new ActionButton(PropertiesEnum.CHARGE.getVal(), new TransactionHandler());
+            withdrawBtn = new ActionButton(PropertiesEnum.CHARGE.getVal(), new TransactionHandler(ICommand.WITHDRAW, accountCol, customerCol, balanceCol));
         }
-        withdrawBtn.addActionListener(controller);
         exitBtn = new ActionButton("Exit", new ExitHandler());
+        
+        depositBtn.addActionListener(controller);
+        withdrawBtn.addActionListener(controller);
         exitBtn.addActionListener(controller);
         
         getContentPane().add(getEastActionsPanel(), BorderLayout.EAST);
@@ -115,6 +122,16 @@ public abstract class GUI extends JFrame {
         return controller;
     }
 
+    public Object getSelectedCell(int col) {
+        int row = datatable.getSelectedRow();
+        return row == -1 ? null : datatable.getValueAt(row, col);
+    }
+
+    public String getSelectedCustomer() {
+        int row = datatable.getSelectedRow();
+        return row == -1 ? null : (String) datatable.getValueAt(row, 0);
+    }
+    
     public abstract JPanel createActionButtons();
 
     public abstract DefaultTableModel createModel();

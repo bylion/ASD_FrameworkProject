@@ -114,6 +114,10 @@ public class TransactionDialog extends JDialog {
         closeDialog();
     }
 
+    public int getUserAction() {
+        return userAction;
+    }
+
     private void closeDialog() {
         setVisible(false);
         dispose();

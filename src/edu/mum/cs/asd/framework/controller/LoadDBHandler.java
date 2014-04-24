@@ -7,6 +7,6 @@ public class LoadDBHandler implements EventHandler {
 
     @Override
     public void handle(GUI gui, FinancialCompany fCompany, ActionEvent event) {
-        //TODO: 
+        //TODO: load file (Deserialize action)
     }
 }

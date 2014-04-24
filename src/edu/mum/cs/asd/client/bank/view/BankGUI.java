@@ -19,7 +19,7 @@ public class BankGUI extends GUI {
     public ActionButton addInterestBtn;
 
     public BankGUI(Bank application) {
-        super(application, "Bank Application", ApplicationNatureEnum.DEBIT);
+        super(application, "Bank Application", ApplicationNatureEnum.DEBIT, 7, 1, 8);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class BankGUI extends GUI {
 
     @Override
     public void addToDataModel(Customer customer, Account account, DefaultTableModel model) {
-        model.addRow(new Object[]{customer, customer.getStreet(), customer.getCity(), 
+        model.addRow(new Object[]{account.getAccountNumber(), customer, customer.getStreet(), customer.getCity(), 
             customer.getState(), customer.getZipcode(), customer.getType(), account, account.getBalance()});
     }
 

@@ -17,11 +17,11 @@ public class CCardGUI extends GUI {
     public ActionButton generateMonthlyBillsBtn;
 
     public CCardGUI(FinancialCompany controller) {
-        super(controller, "Credit-Card Processing Application", ApplicationNatureEnum.CREDIT);
+        super(controller, "Credit-Card Processing Application", ApplicationNatureEnum.CREDIT, 3, 0, 4);
     }
     
     public CCardGUI(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
-        super(controller, title, nature);
+        super(controller, title, nature, 3, 0, 4);
     }
 
     @Override

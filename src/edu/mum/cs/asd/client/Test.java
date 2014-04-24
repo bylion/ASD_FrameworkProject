@@ -32,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 public class Test extends GUI{
 
     public Test(FinancialCompany controller, String title, ApplicationNatureEnum nature) {
-        super(controller, title, nature);
+        super(controller, title, nature, 7, 1, 8);
     }
 
 //    public Test() {
@@ -57,9 +57,9 @@ public class Test extends GUI{
     }
     
     public static void main(String[] args){
-//        Test test = new Test(null, "Test", ApplicationNatureEnum.CREDIT);
-//        test.setVisible(true);
-//        test.setResizable(true);
+        Test test = new Test(null, "Test", ApplicationNatureEnum.CREDIT);
+        test.setVisible(true);
+        test.setResizable(true);
         
 //        ReportDialog dialog = new ReportDialog(null, "Report", "Here is my first report man");
         
@@ -68,8 +68,8 @@ public class Test extends GUI{
 //        BankGUI bankGUI = new BankGUI(new BankApplication());
 //        bankGUI.setVisible(true);
         
-        CCardGUI cCardGUI = new CCardGUI(new Card());
-        cCardGUI.setVisible(true);
+//        CCardGUI cCardGUI = new CCardGUI(new Card());
+//        cCardGUI.setVisible(true);
 //        CompanyAccountDialog dialog = new CompanyAccountDialog(null, "Add ");
 //        PersonalAccountDialog dialog = new PersonalAccountDialog(null, "Add");
 //        dialog.setVisible(true);

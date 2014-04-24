@@ -1,22 +1,55 @@
 package edu.mum.cs.asd.framework.controller;
 
-import edu.mum.cs.asd.framework.model.command.*;
+import edu.mum.cs.asd.framework.model.Account;
+import edu.mum.cs.asd.framework.model.Customer;
+import edu.mum.cs.asd.framework.model.Entry;
+import edu.mum.cs.asd.framework.model.Factory;
+import edu.mum.cs.asd.framework.model.command.CommandManager;
+import edu.mum.cs.asd.framework.model.command.ICommand;
 import edu.mum.cs.asd.framework.view.*;
 import java.awt.event.ActionEvent;
 
 public class TransactionHandler implements EventHandler {
 
-    private CommandManager cmdManager;
+    private int type;
+    private int accountCol;
+    private int customerCol;
+    private int balanceCol;
     private TransactionDialog txDialog;
+
+    public TransactionHandler(int type, int accountCol, int customerCol, int balanceCol) {
+        this.type = type;
+        this.accountCol = accountCol;
+        this.customerCol = customerCol;
+        this.balanceCol = balanceCol;
+    }
 
     @Override
     public void handle(GUI gui, FinancialCompany fCompany, ActionEvent event) {
-        //TODO: Create Dialog
+        Account a = (Account) gui.getSelectedCell(accountCol);
+        Customer c = (Customer) gui.getSelectedCell(customerCol);
+        if (a == null || c == null) {
+            return;
+        }
 
-        //TODO: Check Ok button
-        //TODO: Create check existing account
-        //IEntry entry = factory.createEntry();
-        //ICommand cmd = factory.createTransaction(entry);
-//        cmdManager.submit(cmd);
+        switch (type) {
+            case ICommand.DEPOSIT:
+                txDialog = new TransactionDialog(gui, "Deposit", a.getVal("accountNumber"));
+                break;
+
+            case ICommand.WITHDRAW:
+                txDialog = new TransactionDialog(gui, "Withdraw", a.getVal("accountNumber"));
+                break;
+        }
+
+        txDialog.setVisible(true);
+
+        if (txDialog.getUserAction() == TransactionDialog.OK_ACTION) {
+            Entry entry = Factory.getInstance().createEntry(a, txDialog.getAmount());
+
+            ICommand transaction = Factory.getInstance().createTransaction(entry, type);
+            CommandManager.getInstance().submit(transaction);
+            gui.updateCell(a.getBalance(), balanceCol);
+        }
     }
 }
