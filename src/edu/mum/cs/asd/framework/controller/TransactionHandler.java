@@ -35,12 +35,12 @@ public class TransactionHandler implements EventHandler {
         TransactionTypeEnum txType = TransactionTypeEnum.DEPOSIT;
         switch (type) {
             case ICommand.DEPOSIT:
-                txDialog = new TransactionDialog(gui, "Deposit", a.getVal("accountNumber"));
+                txDialog = new TransactionDialog(gui, "Deposit", a.getAccountNumber());
                 txType = TransactionTypeEnum.DEPOSIT;
                 break;
 
             case ICommand.WITHDRAW:
-                txDialog = new TransactionDialog(gui, "Withdraw", a.getVal("accountNumber"));
+                txDialog = new TransactionDialog(gui, "Withdraw", a.getAccountNumber());
                 txType = TransactionTypeEnum.WITHDRAW;
                 break;
         }

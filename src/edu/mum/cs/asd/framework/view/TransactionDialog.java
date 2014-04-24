@@ -15,7 +15,7 @@ public class TransactionDialog extends JDialog {
     private JLabel acctNumberLabel;
     private JLabel amountLabel;
     //Inputs
-    private JTextField acctNumberField;
+    private JLabel acctNumberField;
     private JTextField amountField;
     //buttons
     private JButton cancelButton;
@@ -42,7 +42,7 @@ public class TransactionDialog extends JDialog {
         acctNumberLabel = new JLabel("Acct Nr");
         amountLabel = new JLabel("Amount");
 
-        acctNumberField = new JTextField(accountNumber);
+        acctNumberField = new JLabel(accountNumber);
         amountField = new JTextField();
 
         okButton = new JButton("Ok");
@@ -124,7 +124,7 @@ public class TransactionDialog extends JDialog {
     }
 
     public Double getAmount() {
-        Double amount = null;
+        Double amount = 0.0;
         try {
             amount = Double.parseDouble(amountField.getText());
         } catch (NumberFormatException e) {
