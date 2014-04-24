@@ -38,7 +38,7 @@ public abstract class Factory implements IFactory {
         String street = attributes.get("street");
         String city = attributes.get("city");
         String state = attributes.get("state");
-        String zipcode = attributes.get("zipcode");
+        String zipcode = attributes.get("zip");
         String email = attributes.get("email");
 
         if (attributes.get("numOfEmployees") != null) {
