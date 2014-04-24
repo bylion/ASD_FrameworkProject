@@ -124,7 +124,8 @@ public abstract class CreditCardAccount extends Account {
 
     @Override
     public void deposit(Entry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        balance += e.getAmount();
+        notifyCustomer(createNotification(e));
     }
 
     @Override
