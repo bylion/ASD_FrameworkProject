@@ -1,11 +1,20 @@
 package edu.mum.cs.asd.framework.model.predicate;
 
-import edu.mum.cs.asd.framework.model.IEntry;
+import edu.mum.cs.asd.framework.model.Entry;
+import java.util.Calendar;
 
-public class CurrentMonthPredicate implements IPredicate<IEntry> {
+public class CurrentMonthPredicate implements IPredicate<Entry> {
 
+    private int month;
+    
+    public CurrentMonthPredicate(int month) {
+        this.month = month;
+    }
+    
     @Override
-    public boolean check(IEntry e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean check(Entry e) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(e.getDate());
+        return calendar.get(Calendar.MONTH) == month;
     }
 }

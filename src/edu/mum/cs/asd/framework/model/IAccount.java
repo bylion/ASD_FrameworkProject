@@ -7,7 +7,7 @@ public interface IAccount {
 
     public String getAccountNumber();
 
-    public void addEntry(IEntry entry);
+    public void addEntry(Entry entry);
 
     public double getBalance();
 
@@ -15,7 +15,7 @@ public interface IAccount {
 
     public double getInterestValue();
 
-    public <R> R searchEntries(IPredicate<IEntry> predicate, IFunctor<IEntry, R> functor);
+    public <R> R searchEntries(IPredicate<Entry> predicate, IFunctor<Entry, R> functor);
 
     public String getAcctType();
 

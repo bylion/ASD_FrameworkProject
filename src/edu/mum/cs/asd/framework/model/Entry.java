@@ -9,7 +9,7 @@ public class Entry implements IEntry {
     private Date date;
     private double balanceBefore;
     private double balanceAfter;
-    private String type;
+    private TransactionTypeEnum type;
 
     /**
      * Create an entry before doing the actual transaction, as when creating an
@@ -25,6 +25,7 @@ public class Entry implements IEntry {
     public Entry(Account account, double amount, TransactionTypeEnum type) {
         this.account = account;
         this.amount = amount;
+        this.type = type;
         date = new Date();
         balanceBefore = account.getBalance();
         String ccNumber = account.getVal("ccNumber");
@@ -75,12 +76,12 @@ public class Entry implements IEntry {
     }
 
     @Override
-    public String getType() {
+    public TransactionTypeEnum getType() {
         return type;
     }
 
     @Override
-    public void setType(String type) {
+    public void setType(TransactionTypeEnum type) {
         this.type = type;
     }
 

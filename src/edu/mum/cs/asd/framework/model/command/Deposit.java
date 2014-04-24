@@ -1,10 +1,11 @@
 package edu.mum.cs.asd.framework.model.command;
 
 import edu.mum.cs.asd.framework.model.Entry;
+import edu.mum.cs.asd.framework.model.TransactionTypeEnum;
 
 public class Deposit implements ICommand {
 
-    private static final String TYPE = "Deposit";
+    private static final TransactionTypeEnum TYPE = TransactionTypeEnum.DEPOSIT;
     private Entry entry;
 
     public Deposit(Entry entry) {

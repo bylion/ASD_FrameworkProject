@@ -15,7 +15,7 @@ public class GenerateReportHandler implements EventHandler {
         StringBuilder sb = new StringBuilder();
         for (Customer customer : fCompany.getCustomers()) {
             for (Account acct : customer.getAccounts()) {
-                sb.append(acct.generateMonthlyReport());
+                sb.append(acct.generateMonthlyReport()).append('\n');
             }
         }
         ReportDialog rd = new ReportDialog(gui, "Report", sb.toString());
